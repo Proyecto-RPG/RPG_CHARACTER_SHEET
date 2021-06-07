@@ -60,6 +60,16 @@ body {
     border: 0;
 }
 
+.entrada2 {
+    border-radius: 50px;
+    padding: 15px;
+    border: 0;
+    width: 500px !important;
+    font-size: 40px !important;
+    text-align: center;
+    background-color: #E7D6A0;
+}
+
 .modulo {
     width: 400px;
 }
@@ -92,4 +102,5 @@ body {
 .lista {
     width: 277px;
     padding: 5px;
+    border-radius: 15px;
 }
