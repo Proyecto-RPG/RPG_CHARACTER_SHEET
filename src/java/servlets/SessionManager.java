@@ -44,7 +44,7 @@ public class SessionManager extends HttpServlet {
                     Connect.con.close();
                     HttpSession sesion = request.getSession();
                     sesion.setAttribute(nickname, guest.signIn(nickname, password));
-                    response.sendRedirect
+                    response.sendRedirect("singin_session.jsp?nickname="+nickname);
                 }else{
                     response.sendRedirect("index.html?login="+"false");
                     Connect.con.close();
