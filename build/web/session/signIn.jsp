@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="session_manager.do" method="POST">
+        <form action="../session_manager.do" method="POST">
             <table border="1">
                 <tbody>
                     <tr>
