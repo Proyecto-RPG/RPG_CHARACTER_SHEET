@@ -15,6 +15,7 @@ import model.Connect;
  */
 public class Player extends User{
     private int idUser;
+    private Character character;
     
     public Player() {
     }
@@ -38,6 +39,22 @@ public class Player extends User{
         }
             
         return true;
+    }
+
+    public Character getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(Character character) {
+        this.character = character;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     

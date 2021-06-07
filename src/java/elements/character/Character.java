@@ -26,13 +26,28 @@ public class Character {
     private int Class_idClass;
     private Classes cls;
     private Equipment equip;
+    private Equipment equip2;
+    private Equipment equip3;
+    private Equipment equip4;
+    private Equipment equip5;
+    private Equipment equip6;
+    private Equipment equip7;
+    private Equipment equip8;
     private Race race;
     private Skill skill;
+    private Skill skill2;
+    private Skill skill3;
+    private Skill skill4;
+
     
     public Character() {
     }
 
-    public Character(int idCharacter, String characterName, int hp, int level, String state, String dextery, String strong, String constitution, String intelligence, String wisdom, String carism, int User_idUser, int Race_idRace, int Class_idClass, Classes cls, Equipment equip, Race race, Skill skill) {
+    public Character(int idCharacter, String characterName, int hp, int level,
+            String state, String dextery, String strong, String constitution, 
+            String intelligence, String wisdom, String carism, int User_idUser,
+            int Race_idRace, int Class_idClass, Classes cls, Equipment equip,
+            Race race, Skill skill, Skill skill2) {
         this.idCharacter = idCharacter;
         this.characterName = characterName;
         this.hp = hp;
@@ -51,6 +66,7 @@ public class Character {
         this.equip = equip;
         this.race = race;
         this.skill = skill;
+        this.skill2 = skill2;
     }
 
     
@@ -198,7 +214,85 @@ public class Character {
     public void setSkill(Skill skill) {
         this.skill = skill;
     }
-    
-    
-            
+
+    public Equipment getEquip2() {
+        return equip2;
+    }
+
+    public void setEquip2(Equipment equip2) {
+        this.equip2 = equip2;
+    }
+
+    public Equipment getEquip3() {
+        return equip3;
+    }
+
+    public void setEquip3(Equipment equip3) {
+        this.equip3 = equip3;
+    }
+
+    public Equipment getEquip4() {
+        return equip4;
+    }
+
+    public void setEquip4(Equipment equip4) {
+        this.equip4 = equip4;
+    }
+
+    public Equipment getEquip5() {
+        return equip5;
+    }
+
+    public void setEquip5(Equipment equip5) {
+        this.equip5 = equip5;
+    }
+
+    public Equipment getEquip6() {
+        return equip6;
+    }
+
+    public void setEquip6(Equipment equip6) {
+        this.equip6 = equip6;
+    }
+
+    public Equipment getEquip7() {
+        return equip7;
+    }
+
+    public void setEquip7(Equipment equip7) {
+        this.equip7 = equip7;
+    }
+
+    public Equipment getEquip8() {
+        return equip8;
+    }
+
+    public void setEquip8(Equipment equip8) {
+        this.equip8 = equip8;
+    }
+
+    public Skill getSkill2() {
+        return skill2;
+    }
+
+    public void setSkill2(Skill skill2) {
+        this.skill2 = skill2;
+    }
+
+    public Skill getSkill3() {
+        return skill3;
+    }
+
+    public void setSkill3(Skill skill3) {
+        this.skill3 = skill3;
+    }
+
+    public Skill getSkill4() {
+        return skill4;
+    }
+
+    public void setSkill4(Skill skill4) {
+        this.skill4 = skill4;
+    }
+        
 }
