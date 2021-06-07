@@ -73,3 +73,7 @@ body {
 .brightness img:hover {
     opacity: .5;
 }
+
+.lista {
+    width: 200px;
+}
