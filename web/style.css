@@ -68,6 +68,11 @@ body {
     max-width: 235px;
 }
 
+.imgwidth2 {
+    max-width: 75px;
+    margin-right: 20px;
+}
+
 .brightness {
     display: inline-block;
 
