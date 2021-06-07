@@ -12,12 +12,14 @@
         <div class="jumbotron ancho center-block">
             <img src="logo-small.png" class="center-block">
             <div class="jumbotron modulo center-block">
-                <p class="text2">Usuario:</p>
-                <p><input type="text" class="entrada" required></p>
-                <p class="text2">Contraseña:</p>
-                <p><input type="password" class="entrada" required></p>
-                <br>
-                <form action=""><button class="btn btn-primary center-block">Ingresar</button></form>
+                <form action="session_manager.do" method="post">
+                    <p class="text2">Usuario:</p>
+                    <p><input type="text" name="txt_nickname" class="entrada" required></p>
+                    <p class="text2">Contraseña:</p>
+                    <p><input type="password" name="txt_password" class="entrada" required></p>
+                    <br>
+                    <button class="btn btn-primary center-block" name="btn_login">Ingresar</button>
+                </form>
                 <br>
                 <form action="index.html"><button class="btn btn-danger center-block">Volver</button></form>
             </div>
