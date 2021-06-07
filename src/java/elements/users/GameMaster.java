@@ -16,7 +16,7 @@ public class GameMaster extends User{
 
     public GameMaster(String nickname, String password, int typeUser) {
         super(nickname, password, typeUser);
-        
+    
         
     }
 }

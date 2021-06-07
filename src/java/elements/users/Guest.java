@@ -5,51 +5,62 @@
  */
 package elements.users;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import model.Connect;
 
 /**
  *
  * @author Alex A_R
  */
-public class Guest{
-    
+public class Guest {
+
 //    Metodo para registrar una cuenta de usuario
-    public boolean signUp(String nickname, String password, int typeUser){
+    public boolean signUp(String nickname, String password, int typeUser) {
         int validate = 0;
         Connect con = new Connect();
         con.connectAsGuest();
-//      typeUser = 2 corresponde al ID de Player
-        if (typeUser==2){
-            try{
-                validate = Connect.state.executeUpdate("INSERT INTO 'usuario' "
-                        + "('idUsuario', 'nombre_usuario', 'pass_usuario', 'Tipo_usuario')"
-                        + " VALUES('NULL','"+nickname+"','"+password+"','"+typeUser+"');");
-            }catch(Exception e){
-                e.printStackTrace();
+        
+        if (typeUser == 2) { //      typeUser = 2 corresponde al ID de Player
+            try {
+                validate = Connect.state.executeUpdate("INSERT INTO usuario "
+                        + " VALUES('NULL','" + nickname + "','" + password + "','" + typeUser + "');");
+            } catch (SQLException e) {
             }
-//      typeUser = 3 corresponde al ID de GameMaster
-        }else if (typeUser==3){
-            try{
-                validate = Connect.state.executeUpdate("INSERT INTO 'usuario' "
-                        + "('idUsuario','nombre_usuario','pass_usuario','Tipo_usuario') "
-                        + "VALUES('NULL','"+nickname+"','"+password+"','"+typeUser+"');");
-            }catch (Exception e){
-                e.printStackTrace();
+
+        } else if (typeUser == 3) { //      typeUser = 3 corresponde al ID de GameMaster
+            try {
+                validate = Connect.state.executeUpdate("INSERT INTO usuario "
+                        + "VALUES('NULL','" + nickname + "','" + password + "','" + typeUser + "');");
+            } catch (SQLException e) {
             }
         }
-        return validate!=0;
+        return validate != 0;
     }
-    
-    public boolean signIn(String nickname, String password){
-        int validate = 0;
-        Connect con = new Connect();
-        con.connectAsGuest();
-        try{
-            validate = Connect.state.executeUpdate("SELECT * FROM usuario"
-                    + "WHERE nombre_usuario ="+nickname+" AND pass_usuario ="+password+";");
-        }catch (Exception e){
-            e.printStackTrace();
+
+//  Método para ingresar una cuenta creada
+    public User signIn(String nickname, String password) throws SQLException{
+        try {
+            Connect con = new Connect();
+            con.connectAsGuest();
+            User user = new User();
+            ResultSet rs = Connect.state.executeQuery("SELECT * FROM usuario "
+                + "WHERE nombre_usuario LIKE '"+ nickname +"'  AND pass_usuario LIKE '" + password + "';");
+            if (rs.next()) {
+                System.out.println("Usuario encontrado");
+                while (rs.next()) {
+                    user.setNickname((String) rs.getObject(1));
+                    user.setPassword((String) rs.getObject(2));
+                    user.setTypeUser((int) rs.getObject(3));
+                }
+            return user;
+            } else {
+                System.out.println("Usuario no encontrado");
+            }
+            
+        } catch (SQLException e) {
+            System.err.println("ERROR: "+e);
         }
-        return validate!=0;
+        return null;
     }
 }
