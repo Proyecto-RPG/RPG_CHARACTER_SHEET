@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Connect;
 
 /**
@@ -41,7 +42,9 @@ public class SessionManager extends HttpServlet {
                 System.out.println("Parametros capturados");
                 if (guest.signIn(nickname, password)!=null){
                     Connect.con.close();
-                    response.sendRedirect("index.html?login="+"true");
+                    HttpSession sesion = request.getSession();
+                    sesion.setAttribute(nickname, guest.signIn(nickname, password));
+                    response.sendRedirect
                 }else{
                     response.sendRedirect("index.html?login="+"false");
                     Connect.con.close();

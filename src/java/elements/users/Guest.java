@@ -5,8 +5,10 @@
  */
 package elements.users;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.servlet.http.HttpSession;
 import model.Connect;
 
 /**

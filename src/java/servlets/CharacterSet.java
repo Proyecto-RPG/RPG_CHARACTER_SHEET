@@ -32,7 +32,7 @@ public class CharacterSet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
+            out.println("<!DOCTYPE html>");asd
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet CharacterSet</title>");            
