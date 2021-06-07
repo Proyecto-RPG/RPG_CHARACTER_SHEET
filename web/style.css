@@ -22,6 +22,10 @@ body {
     margin-bottom: 25px;
 }
 
+.mar2 {
+    margin-top: 50px;
+}
+
 .text1 {
     color: #848484;
     font-size: smaller !important;
@@ -58,6 +62,10 @@ body {
 
 .modulo {
     width: 400px;
+}
+
+.modulo2 {
+    width: 600px;
 }
 
 .ancho {
