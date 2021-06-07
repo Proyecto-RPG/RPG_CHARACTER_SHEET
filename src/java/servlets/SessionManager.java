@@ -37,12 +37,14 @@ public class SessionManager extends HttpServlet {
                 String nickname = request.getParameter("txt_nickname");
                 String password = request.getParameter("txt_password");
                 
+                System.out.println("Parametros capturados");
                 if (guest.signIn(nickname, password)){
                     response.sendRedirect("index.html?login="+"true");
                 }else{
                     response.sendRedirect("index.html?login="+"false");
                 }
             }
+        }catch (Exception e){
         }
     }
 
