@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Connect;
 
 /**
  *
@@ -37,12 +38,26 @@ public class SessionManager extends HttpServlet {
                 String nickname = request.getParameter("txt_nickname");
                 String password = request.getParameter("txt_password");
                 
-                if (guest.signIn(nickname, password)){
+                System.out.println("Parametros capturados");
+                if (guest.signIn(nickname, password)!=null){
+                    Connect.con.close();
                     response.sendRedirect("index.html?login="+"true");
                 }else{
                     response.sendRedirect("index.html?login="+"false");
+                    Connect.con.close();
                 }
             }
+            if (request.getParameter("btn_register")!=null) {
+                String nickanme = request.getParameter("txt_nickname");
+                String password = request.getParameter("txt_password");
+                int typeUser =  Integer.valueOf(request.getParameter("cb_typeuser"));
+                
+                if (guest.signUp(nickanme, password, typeUser)) {
+                    
+                }
+                
+            }
+        }catch (Exception e){
         }
     }
 
