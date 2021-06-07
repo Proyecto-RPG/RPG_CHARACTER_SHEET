@@ -21,5 +21,7 @@
                 Player player = new Player(user.getNickname(),user.getPassword(),user.getTypeUser());
             }
         %>
+        
+        
     </body>
 </html>
