@@ -39,17 +39,6 @@ body {
     text-align: center;
 }
 
-
-.text4 {
-    color: #B9B9B9 !important;
-    font-size: 25px !important;
-}
-
-.txtmarg {
-    margin-left: 10px !important;
-}
-
-
 .entrada {
     border-radius: 15px;
     padding: 6px;
@@ -62,20 +51,4 @@ body {
 
 .ancho {
     max-width: 540px;
-}
-
-.imgwidth {
-    max-width: 235px;
-}
-
-.brightness {
-    display: inline-block;
-
-}
-.brightness img:hover {
-    opacity: .5;
-}
-
-.lista {
-    width: 200px;
 }
