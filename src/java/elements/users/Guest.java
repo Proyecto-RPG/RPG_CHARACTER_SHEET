@@ -20,19 +20,17 @@ public class Guest {
         int validate = 0;
         Connect con = new Connect();
         con.connectAsGuest();
-
+        
         if (typeUser == 2) { //      typeUser = 2 corresponde al ID de Player
             try {
-                validate = Connect.state.executeUpdate("INSERT INTO 'usuario' "
-                        + "('idUsuario', 'nombre_usuario', 'pass_usuario', 'Tipo_usuario')"
+                validate = Connect.state.executeUpdate("INSERT INTO usuario "
                         + " VALUES('NULL','" + nickname + "','" + password + "','" + typeUser + "');");
             } catch (SQLException e) {
             }
 
         } else if (typeUser == 3) { //      typeUser = 3 corresponde al ID de GameMaster
             try {
-                validate = Connect.state.executeUpdate("INSERT INTO 'usuario' "
-                        + "('idUsuario','nombre_usuario','pass_usuario','Tipo_usuario') "
+                validate = Connect.state.executeUpdate("INSERT INTO usuario "
                         + "VALUES('NULL','" + nickname + "','" + password + "','" + typeUser + "');");
             } catch (SQLException e) {
             }
@@ -41,8 +39,7 @@ public class Guest {
     }
 
 //  Método para ingresar una cuenta creada
-    public boolean signIn(String nickname, String password) throws SQLException{
-        boolean validate = true;
+    public User signIn(String nickname, String password) throws SQLException{
         try {
             Connect con = new Connect();
             con.connectAsGuest();
@@ -56,14 +53,14 @@ public class Guest {
                     user.setPassword((String) rs.getObject(2));
                     user.setTypeUser((int) rs.getObject(3));
                 }
+            return user;
             } else {
                 System.out.println("Usuario no encontrado");
-                validate = false;
             }
             
         } catch (SQLException e) {
             System.err.println("ERROR: "+e);
         }
-        return validate;
+        return null;
     }
 }
