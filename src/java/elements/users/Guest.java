@@ -24,18 +24,22 @@ public class Guest {
         if (typeUser == 2) { //      typeUser = 2 corresponde al ID de Player
             try {
                 validate = Connect.state.executeUpdate("INSERT INTO usuario "
-                        + " VALUES('NULL','" + nickname + "','" + password + "','" + typeUser + "');");
+                        + " VALUES(NULL,'" + nickname + "','" + password + "','" + typeUser + "');");
+                System.out.println("Usuario registrado como Player");
             } catch (SQLException e) {
+                System.err.println("ERROR: "+e);
             }
 
         } else if (typeUser == 3) { //      typeUser = 3 corresponde al ID de GameMaster
             try {
                 validate = Connect.state.executeUpdate("INSERT INTO usuario "
-                        + "VALUES('NULL','" + nickname + "','" + password + "','" + typeUser + "');");
+                        + "VALUES(NULL,'" + nickname + "','" + password + "','" + typeUser + "');");
+                System.out.println("Usuario registrado como Game Master");
             } catch (SQLException e) {
+                System.err.println("ERROR: "+e);
             }
         }
-        return validate != 0;
+        return validate!=0;
     }
 
 //  Método para ingresar una cuenta creada
