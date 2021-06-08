@@ -5,6 +5,7 @@
  */
 package elements.users;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.Connect;
@@ -53,9 +54,10 @@ public class Guest {
             if (rs.next()) {
                 System.out.println("Usuario encontrado");
                 while (rs.next()) {
-                    user.setNickname((String) rs.getObject(1));
-                    user.setPassword((String) rs.getObject(2));
-                    user.setTypeUser((int) rs.getObject(3));
+                    user.setIdUser((int) rs.getObject(1));
+                    user.setNickname((String) rs.getObject(2));
+                    user.setPassword((String) rs.getObject(3));
+                    user.setTypeUser((int) rs.getObject(4));
                 }
             return user;
             } else {
