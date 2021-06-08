@@ -10,6 +10,7 @@ package elements.character;
  * @author Alex A_R
  */
 public class Character {
+
     private int idCharacter;
     private String characterName;
     private String characterGender;
@@ -41,7 +42,7 @@ public class Character {
     private Skill skill4;
 
     public Character() {
-    }  
+    }
 
     public int getClass_idClass() {
         return Class_idClass;
@@ -74,7 +75,7 @@ public class Character {
     public void setCharacterGender(String characterGender) {
         this.characterGender = characterGender;
     }
-    
+
     public int getHp() {
         return hp;
     }
