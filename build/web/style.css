@@ -22,6 +22,10 @@ body {
     margin-bottom: 25px;
 }
 
+.mar2 {
+    margin-top: 25px;
+}
+
 .text1 {
     color: #848484;
     font-size: smaller !important;
@@ -56,8 +60,22 @@ body {
     border: 0;
 }
 
+.entrada2 {
+    border-radius: 50px;
+    padding: 15px;
+    border: 0;
+    width: 650px !important;
+    font-size: 40px !important;
+    text-align: center;
+    background-color: #D32E60;
+}
+
 .modulo {
     width: 400px;
+}
+
+.modulo2 {
+    width: 600px;
 }
 
 .ancho {
@@ -68,10 +86,27 @@ body {
     max-width: 235px;
 }
 
+<<<<<<< HEAD
+.imgwidth2 {
+    max-width: 75px;
+    margin-right: 20px;
+}
+
+=======
+>>>>>>> main
 .brightness {
     display: inline-block;
 
 }
 .brightness img:hover {
     opacity: .5;
+<<<<<<< HEAD
+}
+
+.lista {
+    width: 277px;
+    padding: 5px;
+    border-radius: 15px;
+=======
+>>>>>>> main
 }
