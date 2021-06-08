@@ -36,6 +36,7 @@ public class SessionManager extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             Guest guest = new Guest();
             
+//            Captura el parametro de login, crea un objeto y lo captura en una sesion
             if(request.getParameter("btn_login")!=null){
                 String nickname = request.getParameter("txt_nickname");
                 String password = request.getParameter("txt_password");
@@ -51,15 +52,19 @@ public class SessionManager extends HttpServlet {
                     Connect.con.close();
                 }
             }
+            
+//            Captura parametros de registro, los ingresa al metodo signUp y redirecciona si es Player.
             if (request.getParameter("btn_register")!=null) {
                 String nickanme = request.getParameter("txt_nickname");
                 String password = request.getParameter("txt_password");
                 int typeUser =  Integer.valueOf(request.getParameter("cb_typeuser"));
+                guest.signUp(nickanme, password, typeUser);
                 
-                if (guest.signUp(nickanme, password, typeUser)) {
-                    
+                if (typeUser == 2) {
+                    response.sendRedirect("nombre.html");
+                }else if (typeUser == 3){
+                    System.out.println("Usuario gamemaster registrado");
                 }
-                
             }
         }catch (Exception e){
         }

@@ -37,6 +37,8 @@ public class CharacterSet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
+//            Captura parametros de nombre de personaje y genero, instancia un personaje
+//            y lo captura en una sesión como objeto Character
             if (request.getParameter("btn_nombre")!=null) {
                 Character character = new Character();
                 String characterName = request.getParameter("txt_nombre");
@@ -54,6 +56,9 @@ public class CharacterSet extends HttpServlet {
                 response.sendRedirect("raza.html");
             }
             
+//            Captura los parametros de raza, busca la raza en base de datos por medio
+//            de metodo searchRace(), donde se instancia un objeto Race y se setea en
+//            el objeto Character capturado en la sesion.
             if (request.getParameter("btn_raza")!=null) {
                 Character character = (Character)request.getSession().getAttribute("user");
                 String race = request.getParameter("raza");
@@ -64,6 +69,10 @@ public class CharacterSet extends HttpServlet {
                 response.sendRedirect("clase.html");
             }
             
+            
+//            Captura los parametros de clase, busca una clase por metodo searchClass(),
+//            se instancia un objeto, se captura la sesión y se setea el objeto Classes en
+//            el objeto Character.
             if (request.getParameter("btn_clase")!=null) {
                 Character character = (Character)request.getSession().getAttribute("user");
                 String cls = request.getParameter("clase");

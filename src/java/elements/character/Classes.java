@@ -42,6 +42,7 @@ public class Classes {
         this.className = className;
     }
     
+//    Busca una clase en base de datos, y devuelve un objeto Classes
     public static Classes searchClass(String cls){
         Classes clss = new Classes();
         try{

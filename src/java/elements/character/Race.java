@@ -45,6 +45,7 @@ public class Race {
         this.diceHp = dieHp;
     }
     
+//    Busca una raza por nombre en la base de datos, y devuelve un objeto Race
     public static Race searchRace(String race){
         Race race1 = new Race();
         try {

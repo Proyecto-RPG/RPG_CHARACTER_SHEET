@@ -50,6 +50,7 @@ public class Guest {
             Connect con = new Connect();
             con.connectAsGuest();
             
+//          Query para buscar un registro con el nickname y password ingresados
             ResultSet rs = Connect.state.executeQuery("SELECT * FROM usuario "
                 + "WHERE nombre_usuario LIKE '"+ nickname +"'  AND pass_usuario LIKE '" + password + "';");
             if (rs.next()) {
@@ -60,7 +61,7 @@ public class Guest {
                     user.setPassword((String) rs.getObject(3));
                     user.setTypeUser((int) rs.getObject(4));
                 }
-            
+            Connect.con.close();
             } else {
                 System.out.println("Usuario no encontrado");
             }

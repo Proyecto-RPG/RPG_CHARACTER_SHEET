@@ -25,21 +25,7 @@ public class Player extends User{
         this.idUser = super.getIdUser();
     }
     
-    public boolean listCharacter(User user){
-        try{
-            Connect con = new Connect();
-            con.connectAsPlayer();
-            ResultSet rs = Connect.state.executeQuery("SELECT  FROM usuario"
-                    + "WHERE idUsuario = "+user.getIdUser()+";");
-            if (rs.next()) {
-                
-            }
-        }catch(SQLException e){
-            System.err.println("ERROR: "+e);
-        }
-            
-        return true;
-    }
+    
 
     public Character getCharacter() {
         return character;
@@ -56,6 +42,22 @@ public class Player extends User{
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
-
+    
+//    Método para mostrar los personajes del usuario
+    public boolean listCharacter(User user){
+        try{
+            Connect con = new Connect();
+            con.connectAsPlayer();
+            ResultSet rs = Connect.state.executeQuery("SELECT  FROM usuario"
+                    + "WHERE idUsuario = "+user.getIdUser()+";");
+            if (rs.next()) {
+                
+            }
+        }catch(SQLException e){
+            System.err.println("ERROR: "+e);
+        }
+            
+        return true;
+    }
     
 }
