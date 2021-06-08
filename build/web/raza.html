@@ -12,37 +12,37 @@
         <div class="jumbotron center-block">
             <img src="logo-small.png" class="center-block">
             <br>
-            <p class="text4">1. Selecciona la raza de tu personaje...</p>
-            <form action="" method="post">
+            <p class="text4">2. Selecciona la raza de tu personaje...</p>
+            <form action="characterset.do" method="post">
                 <div class="center-block">
                     <div class="row">
                         <div class="col-md-3">
-                            <img class="imgwidth" src="img/raza_humano.png" alt="Humano">
+                            <img class="imgwidth" src="img/raza_humano.png">
                             <p></p>
-                            <p class="text3"><input type="radio" value="humano" name="raza"> Humano</p>
+                            <p class="text3"><input type="radio" value="Humano" name="raza" required> Humano</p>
                         </div>
                         <div class="col-md-3">
                             <img class="imgwidth" src="img/raza_elfo.png">
                             <p></p>
-                            <p class="text3"><input type="radio" value="elfo" name="raza"> Elfo</p>
+                            <p class="text3"><input type="radio" value="Elfo" name="raza"> Elfo</p>
                         </div>
                         <div class="col-md-3">
                             <img class="imgwidth" src="img/raza_enano.png">
                             <p></p>
-                            <p class="text3"><input type="radio" value="enano" name="raza"> Enano</p>
+                            <p class="text3"><input type="radio" value="Enano" name="raza"> Enano</p>
                         </div>
                         <div class="col-md-3">
                             <img class="imgwidth" src="img/raza_orco.png">
                             <p></p>
-                            <p class="text3"><input type="radio" value="orco" name="raza"> Orco</p>
+                            <p class="text3"><input type="radio" value="Orco" name="raza"> Orco</p>
                         </div>
                     </div>
                 </div>
                 <br>
-                <button class="btn btn-primary center-block" name="btn_login">Continuar</button>
+                <button class="btn btn-primary center-block" name="btn_raza">Continuar</button>
             </form>
             <br>
-            <form action=""><button class="btn btn-danger center-block">Atrás</button></form>
+            <form action="nombre.html"><button class="btn btn-danger center-block">Atrás</button></form>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>

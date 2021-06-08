@@ -12,6 +12,7 @@ package elements.character;
 public class Character {
     private int idCharacter;
     private String characterName;
+    private String characterGender;
     private int hp;
     private int level;
     private String state;
@@ -39,37 +40,8 @@ public class Character {
     private Skill skill3;
     private Skill skill4;
 
-    
     public Character() {
-    }
-
-    public Character(int idCharacter, String characterName, int hp, int level,
-            String state, String dextery, String strong, String constitution, 
-            String intelligence, String wisdom, String carism, int User_idUser,
-            int Race_idRace, int Class_idClass, Classes cls, Equipment equip,
-            Race race, Skill skill, Skill skill2) {
-        this.idCharacter = idCharacter;
-        this.characterName = characterName;
-        this.hp = hp;
-        this.level = level;
-        this.state = state;
-        this.dextery = dextery;
-        this.strong = strong;
-        this.constitution = constitution;
-        this.intelligence = intelligence;
-        this.wisdom = wisdom;
-        this.carism = carism;
-        this.User_idUser = User_idUser;
-        this.Race_idRace = Race_idRace;
-        this.Class_idClass = Class_idClass;
-        this.cls = cls;
-        this.equip = equip;
-        this.race = race;
-        this.skill = skill;
-        this.skill2 = skill2;
-    }
-
-    
+    }  
 
     public int getClass_idClass() {
         return Class_idClass;
@@ -95,6 +67,14 @@ public class Character {
         this.characterName = characterName;
     }
 
+    public String getCharacterGender() {
+        return characterGender;
+    }
+
+    public void setCharacterGender(String characterGender) {
+        this.characterGender = characterGender;
+    }
+    
     public int getHp() {
         return hp;
     }
@@ -294,5 +274,5 @@ public class Character {
     public void setSkill4(Skill skill4) {
         this.skill4 = skill4;
     }
-        
+
 }

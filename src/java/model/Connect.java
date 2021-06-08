@@ -17,7 +17,7 @@ public class Connect {
     public void connectAsPlayer(){
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            con = DriverManager.getConnection("jdbc:mysql://%:3306/proyecto_rpg","PLAYER","$player");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/proyecto_rpg","PLAYER","$player");
             state = con.createStatement();
             System.out.println("Conexión establecida por PLAYER");
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException e) {
@@ -30,7 +30,7 @@ public class Connect {
     public void connectAsGameMaster(){
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            con = DriverManager.getConnection("jdbc:mysql://%:3306/proyecto_rpg","GAME_MASTER","$gamemaster");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/proyecto_rpg","GAME_MASTER","$gamemaster");
             state = con.createStatement();
             System.out.println("Conexión establecida por GAMEMASTER");
         }catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException e) {

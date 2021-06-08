@@ -45,10 +45,11 @@ public class Guest {
 
 //  Método para ingresar una cuenta creada
     public User signIn(String nickname, String password) throws SQLException{
+        User user = new User();
         try {
             Connect con = new Connect();
             con.connectAsGuest();
-            User user = new User();
+            
             ResultSet rs = Connect.state.executeQuery("SELECT * FROM usuario "
                 + "WHERE nombre_usuario LIKE '"+ nickname +"'  AND pass_usuario LIKE '" + password + "';");
             if (rs.next()) {
@@ -59,7 +60,7 @@ public class Guest {
                     user.setPassword((String) rs.getObject(3));
                     user.setTypeUser((int) rs.getObject(4));
                 }
-            return user;
+            
             } else {
                 System.out.println("Usuario no encontrado");
             }
@@ -67,6 +68,6 @@ public class Guest {
         } catch (SQLException e) {
             System.err.println("ERROR: "+e);
         }
-        return null;
+        return user;
     }
 }

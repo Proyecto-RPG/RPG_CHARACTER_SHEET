@@ -15,14 +15,14 @@
             <p class="text4">1. Tu aventura está por comenzar...</p>
             <br>
             <p class="text3">Ingresa el nombre de tu personaje (max. 25 caracteres):</p>
-            <form action="raza.html" method="post">
+            <form action="characterset.do" method="post">
             <input type="text" name="txt_nombre" class="entrada2 center-block" required>
             <br>
             <p class="text3">Selecciona el sexo de tu personaje:</p>
             <select name="cb_typeuser" class="mar1 lista center-block" required>
-                <option value = "1">Hombre</option>
-                <option value = "2">Mujer</option>
-                <option value = "3">Indefinido</option>
+                <option value = "Male">Hombre</option>
+                <option value = "Female">Mujer</option>
+                <option value = "Undefined">Indefinido</option>
             </select>
             <button class="btn btn-primary center-block" name="btn_nombre">Continuar</button>
             </form>

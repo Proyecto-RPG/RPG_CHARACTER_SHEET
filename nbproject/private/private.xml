@@ -3,9 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/web/login.html</file>
-            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/src/java/elements/users/Guest.java</file>
+            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/src/java/servlets/CharacterSet.java</file>
+            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/src/java/elements/users/Player.java</file>
             <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/web/index.html</file>
+            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/src/java/model/Connect.java</file>
+            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/web/raza.html</file>
+            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/src/java/elements/character/Race.java</file>
+            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/web/login.html</file>
+            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/src/java/elements/character/Classes.java</file>
+            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/web/nombre.html</file>
+            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/src/java/elements/users/User.java</file>
+            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/web/singin_session.jsp</file>
+            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/web/clase.html</file>
+            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/src/java/elements/users/Guest.java</file>
+            <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/src/java/elements/character/Character.java</file>
             <file>file:/C:/Users/Alex%20A_R/Documents/NetBeansProjects/RPG_CHARACTER_SHEET/src/java/servlets/SessionManager.java</file>
         </group>
     </open-files>

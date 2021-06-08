@@ -35,6 +35,7 @@ public class SessionManager extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             Guest guest = new Guest();
+            
             if(request.getParameter("btn_login")!=null){
                 String nickname = request.getParameter("txt_nickname");
                 String password = request.getParameter("txt_password");
@@ -42,9 +43,9 @@ public class SessionManager extends HttpServlet {
                 System.out.println("Parametros capturados");
                 if (guest.signIn(nickname, password)!=null){
                     Connect.con.close();
-                    HttpSession sesion = request.getSession();
-                    sesion.setAttribute(nickname, guest.signIn(nickname, password));
-                    response.sendRedirect("singin_session.jsp?nickname="+nickname);
+                    HttpSession session = request.getSession();
+                    session.setAttribute("user", guest.signIn(nickname, password));
+                    response.sendRedirect("nombre.html");
                 }else{
                     response.sendRedirect("index.html?login="+"false");
                     Connect.con.close();

@@ -86,27 +86,21 @@ body {
     max-width: 235px;
 }
 
-<<<<<<< HEAD
 .imgwidth2 {
     max-width: 75px;
     margin-right: 20px;
 }
 
-=======
->>>>>>> main
 .brightness {
     display: inline-block;
 
 }
 .brightness img:hover {
     opacity: .5;
-<<<<<<< HEAD
 }
 
 .lista {
     width: 277px;
     padding: 5px;
     border-radius: 15px;
-=======
->>>>>>> main
 }
