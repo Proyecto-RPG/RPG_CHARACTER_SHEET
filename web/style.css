@@ -90,6 +90,8 @@ body {
     font-size: 40px !important;
     text-align: center;
     background-color: #D32E60;
+    font-family: 'Uncial Antiqua', cursive !important;
+    color: black;
 }
 
 .modulo {
