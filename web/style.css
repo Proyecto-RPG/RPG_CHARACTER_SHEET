@@ -76,6 +76,11 @@ body {
     font-size: medium !important;
 }
 
+.text8b {
+    color: #ff5100 !important;
+    font-size: medium !important;
+}
+
 .text9 {
     color: #9E9E9E !important;
     font-size: smaller !important;
@@ -168,4 +173,12 @@ body {
   display: flex;
   margin: auto;
   margin-bottom: 5px;
+  }
+
+  .imp {
+      background-color: #3D3A44;
+      padding: 15px;
+      border-style: solid;
+      border: 0px;
+      border-radius: 25px;
   }
