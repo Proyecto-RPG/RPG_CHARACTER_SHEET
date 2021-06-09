@@ -182,3 +182,11 @@ body {
       border: 0px;
       border-radius: 25px;
   }
+
+  .colornor {
+    color: #FFC300 !important;
+  }
+
+  .coloresp {
+    color: #ff5100 !important;
+  }
