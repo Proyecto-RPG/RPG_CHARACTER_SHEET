@@ -59,6 +59,12 @@ body {
     text-align: center !important;
 }
 
+.text7 {
+    color: #FFD100 !important;
+    font-size: 18px !important;
+    text-align: center !important;
+}
+
 .text6 {
     color: #B9B9B9 !important;
     font-size: 80px !important;
@@ -146,7 +152,7 @@ body {
   border-color: #686474;
   border-radius: 35px !important;
   width: 90%;
-  padding: 10px 0px;
+  padding: 10px 0px 0px 0px;
   display: flex;
   margin: auto;
   margin-bottom: 5px;
