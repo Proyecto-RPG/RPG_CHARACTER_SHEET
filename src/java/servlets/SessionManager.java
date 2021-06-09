@@ -5,7 +5,7 @@
  */
 package servlets;
 
-import elements.users.Guest;
+import elements.users.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -40,16 +40,26 @@ public class SessionManager extends HttpServlet {
             if (request.getParameter("btn_login") != null) {
                 String nickname = request.getParameter("txt_nickname");
                 String password = request.getParameter("txt_password");
-
                 System.out.println("Parametros capturados");
-                if (guest.signIn(nickname, password) != null) {
-                    Connect.con.close();
-                    HttpSession session = request.getSession();
-                    session.setAttribute("user", guest.signIn(nickname, password));
-                    response.sendRedirect("nombre.html");
+
+                User user = guest.signIn(nickname, password);
+                HttpSession session = request.getSession();
+                
+                if (user != null) {
+                    System.out.println("User no es nulo");
+                    if (user.getTypeUser()==2) {
+                        System.out.println("User es de tipo Player");
+                        Player player = (Player)user;
+                        session.setAttribute("user",player);
+                        response.sendRedirect("usuario.html?user="+"player");
+                    }else if(user.getTypeUser()==3){
+                        GameMaster gameMaster = (GameMaster)user;
+                        session.setAttribute("user", gameMaster);
+                        response.sendRedirect("");
+                    }
                 } else {
                     response.sendRedirect("index.html?login=" + "false");
-                    Connect.con.close();
+                    out.println("<script>alert(Usuario no encontrado)</script>");
                 }
             }
 
