@@ -76,8 +76,8 @@ public class CharacterSet extends HttpServlet {
                 String cls = request.getParameter("clase");
 
                 System.out.println("Clase escogida: " + cls);
-                character.setCls(Classes.searchClass(cls));
-                character.setClass_idClass(Classes.searchClass(cls).getIdClass());
+                character.setCls(Classes.assignClass(cls));
+                character.setClass_idClass(Classes.assignClass(cls).getIdClass());
 
                 response.sendRedirect("clase.html?nombre=" + character.getCharacterName()
                         + "&genero=" + character.getCharacterGender() + "&raza=" + character.getRace_idRace());

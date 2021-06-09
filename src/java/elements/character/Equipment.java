@@ -37,5 +37,4 @@ public class Equipment {
     public void setIdEquipment(int idEquipment) {
         this.idEquipment = idEquipment;
     }
-
 }

@@ -5,7 +5,8 @@
  */
 package servlets;
 
-import elements.users.Guest;
+import elements.character.data.ArrayCharacter;
+import elements.users.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -40,16 +41,34 @@ public class SessionManager extends HttpServlet {
             if (request.getParameter("btn_login") != null) {
                 String nickname = request.getParameter("txt_nickname");
                 String password = request.getParameter("txt_password");
-
                 System.out.println("Parametros capturados");
-                if (guest.signIn(nickname, password) != null) {
-                    Connect.con.close();
-                    HttpSession session = request.getSession();
-                    session.setAttribute("user", guest.signIn(nickname, password));
-                    response.sendRedirect("nombre.html");
+
+                User user = guest.signIn(nickname, password);
+                HttpSession session = request.getSession();
+
+                if (user != null) {
+                    System.out.println("User no es nulo");
+                    if (user.getTypeUser() == 2) {
+                        System.out.println("User es de tipo Player");
+
+                        Player player = new Player();
+                        player.setNickname(nickname);
+                        player.setPassword(password);
+                        player.setTypeUser(2);
+                        player.setIdUser(user.getIdUser());
+
+                        System.out.println("User -> Player");
+                        session.setAttribute("user", player);
+                        System.out.println("Session con obj Player");
+                        response.sendRedirect("usuario.jsp?user=" + "player");
+                    } else if (user.getTypeUser() == 3) {
+                        GameMaster gameMaster = (GameMaster) user;
+                        session.setAttribute("user", gameMaster);
+                        response.sendRedirect("");
+                    }
                 } else {
                     response.sendRedirect("index.html?login=" + "false");
-                    Connect.con.close();
+                    out.println("<script>alert(Usuario no encontrado)</script>");
                 }
             }
 

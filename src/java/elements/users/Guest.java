@@ -13,7 +13,7 @@ import model.Connect;
  *
  * @author Alex A_R
  */
-public class Guest {
+public class Guest  extends Connect{
 
 //    Metodo para registrar una cuenta de usuario
     public boolean signUp(String nickname, String password, int typeUser) {
@@ -23,7 +23,7 @@ public class Guest {
 
         if (typeUser == 2) { //      typeUser = 2 corresponde al ID de Player
             try {
-                validate = Connect.state.executeUpdate("INSERT INTO usuario "
+                validate = state.executeUpdate("INSERT INTO usuario "
                         + " VALUES(NULL,'" + nickname + "','" + password + "','" + typeUser + "');");
                 System.out.println("Usuario registrado como Player");
             } catch (SQLException e) {
@@ -50,21 +50,20 @@ public class Guest {
             con.connectAsGuest();
 
 //          Query para buscar un registro con el nickname y password ingresados
-            ResultSet rs = Connect.state.executeQuery("SELECT * FROM usuario "
+            ResultSet rs = state.executeQuery("SELECT * FROM usuario "
                     + "WHERE nombre_usuario LIKE '" + nickname + "'  AND pass_usuario LIKE '" + password + "';");
-            if (rs.next()) {
                 System.out.println("Usuario encontrado");
-                while (rs.next()) {
+                while (rs.next()){
                     user.setIdUser((int) rs.getObject(1));
+                    System.out.println("User id: "+user.getIdUser());
                     user.setNickname((String) rs.getObject(2));
+                    System.out.println("User Nickname: "+user.getNickname());
                     user.setPassword((String) rs.getObject(3));
+                    System.out.println("User Password: "+user.getPassword());
                     user.setTypeUser((int) rs.getObject(4));
+                    System.out.println("User Tipo: "+user.getTypeUser());
                 }
                 Connect.con.close();
-            } else {
-                System.out.println("Usuario no encontrado");
-            }
-
         } catch (SQLException e) {
             System.err.println("ERROR: " + e);
         }

@@ -11,6 +11,7 @@ package elements.character;
  */
 public class Character {
 
+//  Atributos presentes en la base de datos
     private int idCharacter;
     private String characterName;
     private String characterGender;
@@ -26,6 +27,8 @@ public class Character {
     private int User_idUser;
     private int Race_idRace;
     private int Class_idClass;
+    
+//  Atributos de la mecánica del juego
     private Classes cls;
     private Equipment equip;
     private Equipment equip2;
