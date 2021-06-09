@@ -10,6 +10,7 @@ package elements.character;
  * @author Alex A_R
  */
 public class Equipment {
+
     private int idEquipment;
     private String equipmentName;
 
@@ -36,6 +37,5 @@ public class Equipment {
     public void setIdEquipment(int idEquipment) {
         this.idEquipment = idEquipment;
     }
-    
-    
+
 }

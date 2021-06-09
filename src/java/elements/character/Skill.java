@@ -10,6 +10,7 @@ package elements.character;
  * @author Alex A_R
  */
 public class Skill {
+
     private int idSkill;
     private String skillName;
     private String skillMod;
@@ -56,6 +57,5 @@ public class Skill {
     public void setSkillMod(String skillMod) {
         this.skillMod = skillMod;
     }
-    
-    
+
 }

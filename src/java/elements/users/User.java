@@ -10,14 +10,11 @@ package elements.users;
  * @author Alex A_R
  */
 public class User {
-    
+
     private int idUser;
     private String nickname;
     private String password;
     private int typeUser;
-    
-
-    
 
     public User() {
     }
@@ -51,7 +48,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public int getIdUser() {
         return idUser;
     }
@@ -59,6 +56,5 @@ public class User {
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
-    
-    
+
 }

@@ -5,30 +5,26 @@
  */
 package elements.character;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import model.Connect;
+
 /**
  *
  * @author Alex A_R
  */
 public class Classes {
+
     private int idClass;
     private String className;
-    private String classMod;
 
     public Classes() {
     }
 
-    public Classes(int idClass, String className, String classMod) {
+    public Classes(int idClass, String className) {
         this.idClass = idClass;
         this.className = className;
-        this.classMod = classMod;
-    }
 
-    public String getClassMod() {
-        return classMod;
-    }
-
-    public void setClassMod(String classMod) {
-        this.classMod = classMod;
     }
 
     public int getIdClass() {
@@ -46,6 +42,22 @@ public class Classes {
     public void setClassName(String className) {
         this.className = className;
     }
-    
-    
+
+//    Busca una clase en base de datos, y devuelve un objeto Classes
+    public static Classes searchClass(String cls) {
+        Classes clss = new Classes();
+        try {
+            Connect con = new Connect();
+            con.connectAsPlayer();
+            ResultSet rs = con.state.executeQuery("SELECT * FROM clase WHERE nombre_clase LIKE '" + cls + "';");
+            while (rs.next()) {
+                clss.setIdClass((int) rs.getObject(1));
+                clss.setClassName((String) rs.getObject(2));
+            }
+            Connect.con.close();
+        } catch (SQLException e) {
+            System.err.println("ERROR: " + e);
+        }
+        return clss;
+    }
 }

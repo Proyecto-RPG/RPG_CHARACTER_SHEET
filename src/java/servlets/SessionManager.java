@@ -35,32 +35,38 @@ public class SessionManager extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             Guest guest = new Guest();
-            if(request.getParameter("btn_login")!=null){
+
+//            Captura el parametro de login, crea un objeto y lo captura en una sesion
+            if (request.getParameter("btn_login") != null) {
                 String nickname = request.getParameter("txt_nickname");
                 String password = request.getParameter("txt_password");
-                
+
                 System.out.println("Parametros capturados");
-                if (guest.signIn(nickname, password)!=null){
+                if (guest.signIn(nickname, password) != null) {
                     Connect.con.close();
-                    HttpSession sesion = request.getSession();
-                    sesion.setAttribute(nickname, guest.signIn(nickname, password));
-                    response.sendRedirect("singin_session.jsp?nickname="+nickname);
-                }else{
-                    response.sendRedirect("index.html?login="+"false");
+                    HttpSession session = request.getSession();
+                    session.setAttribute("user", guest.signIn(nickname, password));
+                    response.sendRedirect("nombre.html");
+                } else {
+                    response.sendRedirect("index.html?login=" + "false");
                     Connect.con.close();
                 }
             }
-            if (request.getParameter("btn_register")!=null) {
+
+//            Captura parametros de registro, los ingresa al metodo signUp y redirecciona si es Player.
+            if (request.getParameter("btn_register") != null) {
                 String nickanme = request.getParameter("txt_nickname");
                 String password = request.getParameter("txt_password");
-                int typeUser =  Integer.valueOf(request.getParameter("cb_typeuser"));
-                
-                if (guest.signUp(nickanme, password, typeUser)) {
-                    
+                int typeUser = Integer.valueOf(request.getParameter("cb_typeuser"));
+                guest.signUp(nickanme, password, typeUser);
+
+                if (typeUser == 2) {
+                    response.sendRedirect("nombre.html");
+                } else if (typeUser == 3) {
+                    System.out.println("Usuario gamemaster registrado");
                 }
-                
             }
-        }catch (Exception e){
+        } catch (Exception e) {
         }
     }
 

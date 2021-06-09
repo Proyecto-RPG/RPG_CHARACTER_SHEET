@@ -9,14 +9,13 @@ package elements.users;
  *
  * @author Alex A_R
  */
-public class GameMaster extends User{
+public class GameMaster extends User {
 
     public GameMaster() {
     }
 
     public GameMaster(String nickname, String password, int typeUser) {
         super(nickname, password, typeUser);
-    
-        
+
     }
 }
