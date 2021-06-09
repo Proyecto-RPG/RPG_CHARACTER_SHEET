@@ -71,6 +71,16 @@ body {
     margin-top: 80px;
 }
 
+.text8 {
+    color: #FFC300 !important;
+    font-size: medium !important;
+}
+
+.text9 {
+    color: #9E9E9E !important;
+    font-size: smaller !important;
+}
+
 .txtmarg {
     margin-left: 10px !important;
 }
