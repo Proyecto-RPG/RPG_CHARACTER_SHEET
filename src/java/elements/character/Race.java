@@ -52,7 +52,7 @@ public class Race {
         try {
             Connect con = new Connect();
             con.connectAsPlayer();
-            ResultSet rs = con.state.executeQuery("SELECT * FROM raza WHERE nombre_raza LIKE '" + race + "';");
+            ResultSet rs = Connect.state.executeQuery("SELECT * FROM raza WHERE nombre_raza LIKE '" + race + "';");
             while (rs.next()) {
                 race1.setIdRace((int) rs.getObject(1));
                 race1.setRaceName((String) rs.getObject(2));
@@ -63,5 +63,22 @@ public class Race {
             System.err.println("ERROR: " + e);
         }
         return race1;
+    }
+    
+    public static Race searchIdRace (int idRace){
+        Race race = new Race();
+        try {
+            Connect con = new Connect();
+            con.connectAsPlayer();
+            ResultSet rs = Connect.state.executeQuery("SELECT * FROM raza WHERE idRaza="+idRace+";");
+            while (rs.next()){
+                race.setIdRace((int) rs.getObject(1));
+                race.setRaceName((String) rs.getObject(2));
+                race.setDieHp((String) rs.getObject(3));
+            }
+        }catch (SQLException e){
+            System.err.println("ERROR: "+e);
+        }
+        return race;
     }
 }

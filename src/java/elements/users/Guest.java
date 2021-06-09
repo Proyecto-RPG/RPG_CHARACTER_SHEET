@@ -52,9 +52,8 @@ public class Guest  extends Connect{
 //          Query para buscar un registro con el nickname y password ingresados
             ResultSet rs = state.executeQuery("SELECT * FROM usuario "
                     + "WHERE nombre_usuario LIKE '" + nickname + "'  AND pass_usuario LIKE '" + password + "';");
-            if (rs.next()) {
                 System.out.println("Usuario encontrado");
-                while (rs.next()) {
+                while (rs.next()){
                     user.setIdUser((int) rs.getObject(1));
                     System.out.println("User id: "+user.getIdUser());
                     user.setNickname((String) rs.getObject(2));
@@ -65,10 +64,6 @@ public class Guest  extends Connect{
                     System.out.println("User Tipo: "+user.getTypeUser());
                 }
                 Connect.con.close();
-            } else {
-                System.out.println("Usuario no encontrado");
-            }
-
         } catch (SQLException e) {
             System.err.println("ERROR: " + e);
         }

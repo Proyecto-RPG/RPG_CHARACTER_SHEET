@@ -43,8 +43,8 @@ public class Classes {
         this.className = className;
     }
 
-//    Busca una clase en base de datos, y devuelve un objeto Classes
-    public static Classes searchClass(String cls) {
+//  Busca una clase por nombre para asignarla al personaje en creación
+    public static Classes assignClass(String cls){
         Classes clss = new Classes();
         try {
             Connect con = new Connect();
@@ -59,5 +59,23 @@ public class Classes {
             System.err.println("ERROR: " + e);
         }
         return clss;
+    }
+    
+//  Busca una clase para visualizar tarjetas de personajes creados en el menu de usuario
+    public static Classes searchClass(int idClass){
+        Classes cls = new Classes();
+        try {
+            Connect con = new Connect();
+            con.connectAsPlayer();
+            ResultSet rs = con.state.executeQuery("SELECT * FROM clase WHERE idClase = "+idClass+";");
+            while (rs.next()){
+                cls.setIdClass((int)rs.getObject(1));
+                cls.setClassName((String)rs.getObject(2));
+            }
+            Connect.con.close();
+        } catch (SQLException e){
+            System.err.println("ERROR: " +e);
+        }
+        return cls;
     }
 }

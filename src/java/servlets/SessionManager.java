@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import elements.character.data.ArrayCharacter;
 import elements.users.*;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -44,16 +45,24 @@ public class SessionManager extends HttpServlet {
 
                 User user = guest.signIn(nickname, password);
                 HttpSession session = request.getSession();
-                
+
                 if (user != null) {
                     System.out.println("User no es nulo");
-                    if (user.getTypeUser()==2) {
+                    if (user.getTypeUser() == 2) {
                         System.out.println("User es de tipo Player");
-                        Player player = (Player)user;
-                        session.setAttribute("user",player);
-                        response.sendRedirect("usuario.html?user="+"player");
-                    }else if(user.getTypeUser()==3){
-                        GameMaster gameMaster = (GameMaster)user;
+
+                        Player player = new Player();
+                        player.setNickname(nickname);
+                        player.setPassword(password);
+                        player.setTypeUser(2);
+                        player.setIdUser(user.getIdUser());
+
+                        System.out.println("User -> Player");
+                        session.setAttribute("user", player);
+                        System.out.println("Session con obj Player");
+                        response.sendRedirect("usuario.jsp?user=" + "player");
+                    } else if (user.getTypeUser() == 3) {
+                        GameMaster gameMaster = (GameMaster) user;
                         session.setAttribute("user", gameMaster);
                         response.sendRedirect("");
                     }
