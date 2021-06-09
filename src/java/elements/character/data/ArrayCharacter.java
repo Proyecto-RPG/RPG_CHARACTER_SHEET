@@ -1,0 +1,117 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package elements.character.data;
+
+import elements.users.Player;
+import elements.character.Character;
+import elements.character.Classes;
+import elements.character.Equipment;
+import elements.character.Race;
+import elements.character.Skill;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import model.Connect;
+
+/**
+ *
+ * @author Alex A_R
+ */
+public class ArrayCharacter {
+
+    public static ArrayList<Character> characterList = new ArrayList();
+
+    public static void addCharacter(Character character) {
+        characterList.add(character);
+    }
+
+    public static ArrayList<Character> displayCharacter() {
+        return characterList;
+    }
+
+    /*  Método para mostrar los personajes del usuario si existen y alojarlos en un ArrayList. Si no, entonces
+    retorna un falso. */
+    public static boolean listCharacter(Player player) {
+        boolean existCharacter = true;
+        try {
+            Connect con = new Connect();
+            con.connectAsPlayer();
+            ResultSet rs = con.state.executeQuery("SELECT * FROM personaje"
+                    + "WHERE Usuario_idUsuario = " + player.getIdUser() + ";");
+            while (rs.next()) {
+                Character character = new Character();
+                character.setIdCharacter((int) rs.getObject(1));
+                character.setCharacterName((String) rs.getObject(2));
+                character.setCharacterGender((String) rs.getObject(3));
+                character.setHp((int) rs.getObject(4));
+                character.setLevel((int) rs.getObject(5));
+                character.setState((String) rs.getObject(6));
+                character.setDextery((String) rs.getObject(7));
+                character.setStrong((String) rs.getObject(8));
+                character.setConstitution((String) rs.getObject(9));
+                character.setIntelligence((String) rs.getObject(10));
+                character.setWisdom((String) rs.getObject(11));
+                character.setCarism((String) rs.getObject(12));
+                character.setUser_idUser((int) rs.getObject(13));
+                character.setRace_idRace((int) rs.getObject(14));
+                character.setClass_idClass((int) rs.getObject(15));
+                character.setCls(Classes.searchClass(character.getClass_idClass()));
+                
+//                Recorre el arreglo de Equipamientos y dependiendo de la cantidad de elementos del arreglo
+//                lo asigna a su respectivo atributo en la clase Character.
+
+                for (Equipment equip : ArrayEquipment.equipmentList) {
+                    if (ArrayEquipment.equipmentList.indexOf(equip) == 0) {
+                        character.setEquip(equip);
+                        System.out.println("Equipamiento 1: " + equip.getEquipmentName());
+                    } else if (ArrayEquipment.equipmentList.indexOf(equip) == 1) {
+                        character.setEquip2(equip);
+                        System.out.println("Equipamiento 2: " + equip.getEquipmentName());
+                    } else if (ArrayEquipment.equipmentList.indexOf(equip) == 2) {
+                        character.setEquip3(equip);
+                        System.out.println("Equipamiento 3: " + equip.getEquipmentName());
+                    } else if (ArrayEquipment.equipmentList.indexOf(equip) == 3) {
+                        character.setEquip4(equip);
+                        System.out.println("Equipamiento 4: " + equip.getEquipmentName());
+                    } else if (ArrayEquipment.equipmentList.indexOf(equip) == 4) {
+                        character.setEquip5(equip);
+                        System.out.println("Equipamiento 5: " + equip.getEquipmentName());
+                    } else if (ArrayEquipment.equipmentList.indexOf(equip) == 5) {
+                        character.setEquip6(equip);
+                        System.out.println("Equipamiento 6: " + equip.getEquipmentName());
+                    } else if (ArrayEquipment.equipmentList.indexOf(equip) == 6) {
+                        character.setEquip7(equip);
+                        System.out.println("Equipamiento 7: " + equip.getEquipmentName());
+                    } else if (ArrayEquipment.equipmentList.indexOf(equip) == 7) {
+                        character.setEquip8(equip);
+                        System.out.println("Equipamiento 8: " + equip.getEquipmentName());
+                    }
+                }
+                character.setRace(Race.searchIdRace(character.getRace_idRace()));
+                
+                for (Skill skill:ArraySkill.skillList) {
+                    if (ArraySkill.skillList.indexOf(skill)==0) {
+                        character.setSkill(skill);
+                        System.out.println("Habilidad 1: "+skill.getSkillName());
+                    }else if(ArraySkill.skillList.indexOf(skill)==1) {
+                        character.setSkill2(skill);
+                        System.out.println("Habilidad 2: "+skill.getSkillName());
+                    }else if(ArraySkill.skillList.indexOf(skill)==2) {
+                        character.setSkill3(skill);
+                        System.out.println("Habilidad 3: "+skill.getSkillName());
+                    }else if(ArraySkill.skillList.indexOf(skill)==3) {
+                        character.setSkill4(skill);
+                        System.out.println("Habilidad 4: "+skill.getSkillName());
+                    }
+                }
+                addCharacter(character);
+            }
+        } catch (SQLException e) {
+            System.err.println("ERROR: " + e);
+        }
+        return existCharacter;
+    }
+}
