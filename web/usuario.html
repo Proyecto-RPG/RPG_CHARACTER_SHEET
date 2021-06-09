@@ -63,14 +63,17 @@
             <!-- FIN TARJETA DE PERSONAJE -->
             </div>
             <!-- FIN ÁREA DE DESPLIEGUE DE TARJETAS -->
-
             <!-- INICIO ÁREA DE DESPLIEGUE DE MSJE. "NO EXISTEN PERSONAJES" - MOSTRAR SÓLO SI USUARIO NO TIENE PSJES. REGISTRADOS -->
-            <div class="jumbotron tarjeta center-block center">
+            <div class="jumbotron tarjeta center-block center" id="area_sin_personajes">
                 <p class="text7">No tienes personajes registrados. Para crear uno presiona botón "Crear Nuevo Personaje"</p>
             </div>
             <!-- FIN ÁREA DE DESPLIEGUE DE MSJE. "NO EXISTEN PERSONAJES" -->
             <br>
-            <form action="nombre.html"><button name="btn_nuevo" class="btn btn-success btn-lg center-block">Crear Nuevo Personaje</button></form>
+            <!-- BOTÓN CREAR NUEVO PERSONAJE - MOSTRAR SÓLO SI USUARIO TIENE MENOS DE 4 PERSONAJES REGISTRADOS -->
+            <div id="area_boton_nuevo_psje">
+                <form action="nombre.html"><button name="btn_nuevo" class="btn btn-success btn-lg center-block">Crear Nuevo Personaje</button></form>
+            </div>
+            <!-- FIN BOTÓN CREAR NUEVO PSJE. -->
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
