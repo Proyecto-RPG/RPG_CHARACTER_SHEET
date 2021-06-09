@@ -140,6 +140,11 @@ body {
     margin-top: 55px;
 }
 
+.imgwidth5 {
+    max-width: 32px;
+    margin: 0px 5px 0px 0px;
+}
+
 .brightness {
     display: inline-block;
 
@@ -189,4 +194,8 @@ body {
 
   .coloresp {
     color: #ff5100 !important;
+  }
+
+  .sinmarg {
+      margin: 2px !important;
   }
