@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea tu Personaje RPG - Selección de Habilidades</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <div class="container">
+        <div class="jumbotron center-block">
+            <img src="logo-small.png" class="center-block">
+            <br>
+            <p class="text4">4. Selecciona 1 <span class="colornor">habilidad normal</span> y 1 <span class="coloresp">habilidad especial</span>...</p>
+            <br>
+            <form action="" method="post">
+                <span class="modulo2 center-block">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="text8"><img class="imgwidth2" src="img/hab_cler1.png"><input type="radio" value="hab_cler1" name="hab1" required> Oración de Sanación</p><p class="text9">Clérigo recupera (3d6) HP</p>
+                        <p class="text8"><img class="imgwidth2" src="img/hab_cler2.png"><input type="radio" value="hab_cler2" name="hab1" required> Grito Divino</p><p class="text9">Aliados hasta 5 espacios de distancia recuperan (1d10) HP</p>
+                        <p class="text8"><img class="imgwidth2" src="img/hab_cler3.png"><input type="radio" value="hab_cler3" name="hab1" required> Protección Angelical</p><p class="text9">Clérigo invencible por (1d6) turnos, no puede realizar ataques por misma cantidad de turnos</p>
+                    </div>
+                    <div class="col-md-6 imp">
+                        <p class="text8b"><img class="imgwidth2" src="img/hab_cler4.png"><input type="radio" value="hab_cler4" name="hab2" required> Ángel de la Guarda</p><p class="text9">Invoca Ángel guerrero clase media por (2d6) turnos</p>
+                        <p class="text8b"><img class="imgwidth2" src="img/hab_cler5.png"><input type="radio" value="hab_cler5" name="hab2" required> Clamor a los Cielos</p><p class="text9">Aliados hasta 10 espacios de distancia reciben invencibilidad por (1d4) turnos, clérigo queda inmovilizado por 2 turnos</p>
+                    </div>
+                </div>
+                </span>
+                <br>
+                <button class="btn btn-primary center-block mar2" name="btn_habilidades">Continuar</button>
+            </form>
+            <br>
+            <form action="clase.html"><button class="btn btn-danger center-block">Atrás</button></form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

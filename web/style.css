@@ -71,6 +71,21 @@ body {
     margin-top: 80px;
 }
 
+.text8 {
+    color: #FFC300 !important;
+    font-size: medium !important;
+}
+
+.text8b {
+    color: #ff5100 !important;
+    font-size: medium !important;
+}
+
+.text9 {
+    color: #9E9E9E !important;
+    font-size: smaller !important;
+}
+
 .txtmarg {
     margin-left: 10px !important;
 }
@@ -125,6 +140,11 @@ body {
     margin-top: 55px;
 }
 
+.imgwidth5 {
+    max-width: 32px;
+    margin: 0px 5px 0px 0px;
+}
+
 .brightness {
     display: inline-block;
 
@@ -158,4 +178,24 @@ body {
   display: flex;
   margin: auto;
   margin-bottom: 5px;
+  }
+
+  .imp {
+      background-color: #3D3A44;
+      padding: 15px;
+      border-style: solid;
+      border: 0px;
+      border-radius: 25px;
+  }
+
+  .colornor {
+    color: #FFC300 !important;
+  }
+
+  .coloresp {
+    color: #ff5100 !important;
+  }
+
+  .sinmarg {
+      margin: 2px !important;
   }
