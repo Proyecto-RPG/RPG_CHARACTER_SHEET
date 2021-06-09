@@ -26,6 +26,10 @@ body {
     margin-top: 25px;
 }
 
+.mar3 {
+    margin-top: 95px;
+}
+
 .text1 {
     color: #848484;
     font-size: smaller !important;
@@ -47,6 +51,18 @@ body {
 .text4 {
     color: #B9B9B9 !important;
     font-size: 25px !important;
+}
+
+.text5 {
+    color: #B9B9B9 !important;
+    font-size: 20px !important;
+    text-align: center !important;
+}
+
+.text6 {
+    color: #B9B9B9 !important;
+    font-size: 80px !important;
+    margin-top: 80px;
 }
 
 .txtmarg {
@@ -91,6 +107,16 @@ body {
     margin-right: 20px;
 }
 
+.imgwidth3 {
+    max-width: 75px;
+    margin-top: 50px;
+}
+
+.imgwidth4 {
+    max-width: 45px;
+    margin-top: 55px;
+}
+
 .brightness {
     display: inline-block;
 
@@ -104,3 +130,24 @@ body {
     padding: 5px;
     border-radius: 15px;
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    border: 0px;
+  }
+
+.tarjeta {
+  background-color: #3B3940;
+  border: 2px;
+  border-style: solid;
+  border-color: #686474;
+  border-radius: 35px !important;
+  width: 90%;
+  padding: 10px 0px;
+  display: flex;
+  margin: auto;
+  margin-bottom: 5px;
+  }
