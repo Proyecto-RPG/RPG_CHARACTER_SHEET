@@ -5,21 +5,18 @@
  */
 package servlets;
 
-import elements.users.Guest;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Connect;
 
 /**
  *
  * @author Alex A_R
  */
-public class SessionManager extends HttpServlet {
+public class CharacterSet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,33 +31,16 @@ public class SessionManager extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Guest guest = new Guest();
-            if(request.getParameter("btn_login")!=null){
-                String nickname = request.getParameter("txt_nickname");
-                String password = request.getParameter("txt_password");
-                
-                System.out.println("Parametros capturados");
-                if (guest.signIn(nickname, password)!=null){
-                    Connect.con.close();
-                    HttpSession sesion = request.getSession();
-                    sesion.setAttribute(nickname, guest.signIn(nickname, password));
-                    response.sendRedirect("singin_session.jsp?nickname="+nickname);
-                }else{
-                    response.sendRedirect("index.html?login="+"false");
-                    Connect.con.close();
-                }
-            }
-            if (request.getParameter("btn_register")!=null) {
-                String nickanme = request.getParameter("txt_nickname");
-                String password = request.getParameter("txt_password");
-                int typeUser =  Integer.valueOf(request.getParameter("cb_typeuser"));
-                
-                if (guest.signUp(nickanme, password, typeUser)) {
-                    
-                }
-                
-            }
-        }catch (Exception e){
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet CharacterSet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet CharacterSet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

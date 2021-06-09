@@ -4,9 +4,17 @@
         <servlet-name>SessionManager</servlet-name>
         <servlet-class>servlets.SessionManager</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CharacterSet</servlet-name>
+        <servlet-class>servlets.CharacterSet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SessionManager</servlet-name>
         <url-pattern>/session_manager.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CharacterSet</servlet-name>
+        <url-pattern>/characterset.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
