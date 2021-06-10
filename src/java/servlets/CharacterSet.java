@@ -8,6 +8,7 @@ package servlets;
 import elements.character.Character;
 import elements.character.Classes;
 import elements.character.Race;
+import elements.character.Skill;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -78,12 +79,35 @@ public class CharacterSet extends HttpServlet {
                 System.out.println("Clase escogida: " + cls);
                 character.setCls(Classes.assignClass(cls));
                 character.setClass_idClass(Classes.assignClass(cls).getIdClass());
-
-                response.sendRedirect("clase.html?nombre=" + character.getCharacterName()
-                        + "&genero=" + character.getCharacterGender() + "&raza=" + character.getRace_idRace());
-
+                
+                if (character.getCls().getClassName().equals("Arquero")) {
+                    response.sendRedirect("hab_arquero.html");
+                }else if (character.getCls().getClassName().equals("Guerrero")) {
+                    response.sendRedirect("hab_guerrero.html");
+                }else if (character.getCls().getClassName().equals("Clérigo")){
+                    response.sendRedirect("hab_clerigo.html");
+                }else if (character.getCls().getClassName().equals("Mago")){
+                    response.sendRedirect("hab_mago.html");
+                }else if (character.getCls().getClassName().equals("Ladron")){
+                    response.sendRedirect("hab_ladron.html");
+                }else if (character.getCls().getClassName().equals("Druida")){
+                    response.sendRedirect("hab_druida.html");
+                }
             }
-
+            
+            if (request.getParameter("btn_habilidades")!=null) {
+                String[] skill = {};
+                Character character = (Character) request.getSession().getAttribute("user");
+                if (request.getParameter("hab1").equals("hab_arq1")||request.getParameter("hab1").equals("hab_arq2")||
+                        request.getParameter("hab1").equals("hab_arq3")||request.getParameter("hab2").equals("hab_arq4")||
+                        request.getParameter("hab2").equals("hab_arq5")) {
+                    
+                    
+                }
+                
+                
+                
+            }
         }
     }
 
