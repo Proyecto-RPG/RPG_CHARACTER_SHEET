@@ -140,14 +140,11 @@ body {
     margin-top: 55px;
 }
 
-<<<<<<< HEAD
 .imgwidth5 {
     max-width: 32px;
     margin: 0px 5px 0px 0px;
 }
 
-=======
->>>>>>> jspUser
 .brightness {
     display: inline-block;
 
@@ -181,7 +178,6 @@ body {
   display: flex;
   margin: auto;
   margin-bottom: 5px;
-<<<<<<< HEAD
   }
 
   .imp {
@@ -202,6 +198,4 @@ body {
 
   .sinmarg {
       margin: 2px !important;
-=======
->>>>>>> jspUser
   }
