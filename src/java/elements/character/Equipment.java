@@ -5,6 +5,10 @@
  */
 package elements.character;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import model.Connect;
+
 /**
  *
  * @author Alex A_R
@@ -36,5 +40,21 @@ public class Equipment {
 
     public void setIdEquipment(int idEquipment) {
         this.idEquipment = idEquipment;
+    }
+    
+    public static Equipment searchEquip (int idEquip){
+        Equipment equip = new Equipment();
+        try{
+            Connect con = new Connect();
+            con.connectAsPlayer();
+            ResultSet rs = con.state.executeQuery("SELECT * FROM equipamiento WHERE idEquipamiento = "+idEquip+";");
+            while (rs.next()){
+                equip.setIdEquipment((int)rs.getObject(1));
+                equip.setEquipmentName((String)rs.getObject(2));
+            }
+        }catch (SQLException e){
+            System.err.println("ERROR: "+e);
+        }
+        return equip;
     }
 }

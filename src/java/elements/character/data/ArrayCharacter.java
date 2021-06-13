@@ -39,8 +39,8 @@ public class ArrayCharacter {
         try {
             Connect con = new Connect();
             con.connectAsPlayer();
-            ResultSet rs = con.state.executeQuery("SELECT * FROM personaje"
-                    + "WHERE Usuario_idUsuario = " + player.getIdUser() + ";");
+            ResultSet rs = con.state.executeQuery("SELECT * FROM personaje "
+                    + "WHERE Usuario_id_Usuario = " + player.getIdUser() + ";");
             while (rs.next()) {
                 Character character = new Character();
                 character.setIdCharacter((int) rs.getObject(1));
@@ -59,10 +59,9 @@ public class ArrayCharacter {
                 character.setRace_idRace((int) rs.getObject(14));
                 character.setClass_idClass((int) rs.getObject(15));
                 character.setCls(Classes.searchClass(character.getClass_idClass()));
-                
+
 //                Recorre el arreglo de Equipamientos y dependiendo de la cantidad de elementos del arreglo
 //                lo asigna a su respectivo atributo en la clase Character.
-
                 for (Equipment equip : ArrayEquipment.equipmentList) {
                     if (ArrayEquipment.equipmentList.indexOf(equip) == 0) {
                         character.setEquip(equip);
@@ -91,20 +90,20 @@ public class ArrayCharacter {
                     }
                 }
                 character.setRace(Race.searchIdRace(character.getRace_idRace()));
-                
-                for (Skill skill:ArraySkill.skillList) {
-                    if (ArraySkill.skillList.indexOf(skill)==0) {
+
+                for (Skill skill : ArraySkill.skillList) {
+                    if (ArraySkill.skillList.indexOf(skill) == 0) {
                         character.setSkill(skill);
-                        System.out.println("Habilidad 1: "+skill.getSkillName());
-                    }else if(ArraySkill.skillList.indexOf(skill)==1) {
+                        System.out.println("Habilidad 1: " + skill.getSkillName());
+                    } else if (ArraySkill.skillList.indexOf(skill) == 1) {
                         character.setSkill2(skill);
-                        System.out.println("Habilidad 2: "+skill.getSkillName());
-                    }else if(ArraySkill.skillList.indexOf(skill)==2) {
+                        System.out.println("Habilidad 2: " + skill.getSkillName());
+                    } else if (ArraySkill.skillList.indexOf(skill) == 2) {
                         character.setSkill3(skill);
-                        System.out.println("Habilidad 3: "+skill.getSkillName());
-                    }else if(ArraySkill.skillList.indexOf(skill)==3) {
+                        System.out.println("Habilidad 3: " + skill.getSkillName());
+                    } else if (ArraySkill.skillList.indexOf(skill) == 3) {
                         character.setSkill4(skill);
-                        System.out.println("Habilidad 4: "+skill.getSkillName());
+                        System.out.println("Habilidad 4: " + skill.getSkillName());
                     }
                 }
                 addCharacter(character);

@@ -5,7 +5,7 @@
  */
 package servlets;
 
-import elements.character.data.ArrayCharacter;
+
 import elements.users.*;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Connect;
 
 /**
  *
@@ -64,7 +63,7 @@ public class SessionManager extends HttpServlet {
                     } else if (user.getTypeUser() == 3) {
                         GameMaster gameMaster = (GameMaster) user;
                         session.setAttribute("user", gameMaster);
-                        response.sendRedirect("");
+                        response.sendRedirect("");//Redireccion a panel de gamemaster
                     }
                 } else {
                     response.sendRedirect("index.html?login=" + "false");
@@ -72,7 +71,8 @@ public class SessionManager extends HttpServlet {
                 }
             }
 
-//            Captura parametros de registro, los ingresa al metodo signUp y redirecciona si es Player.
+//            Captura parametros de registro, los ingresa al metodo signUp y 
+//              redirecciona si es Player.
             if (request.getParameter("btn_register") != null) {
                 String nickanme = request.getParameter("txt_nickname");
                 String password = request.getParameter("txt_password");

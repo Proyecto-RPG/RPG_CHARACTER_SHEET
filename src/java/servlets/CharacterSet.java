@@ -7,6 +7,7 @@ package servlets;
 
 import elements.character.Character;
 import elements.character.Classes;
+import elements.character.Equipment;
 import elements.character.Race;
 import elements.character.Skill;
 import java.io.IOException;
@@ -47,8 +48,8 @@ public class CharacterSet extends HttpServlet {
                 character.setCharacterName(characterName);
                 character.setCharacterGender(characterGender);
 
-                System.out.println("Nombre de personaje: " + characterName);
-                System.out.println("Genero de personaje: " + characterGender);
+                System.out.println("Nombre de personaje: " + character.getCharacterName());
+                System.out.println("Genero de personaje: " + character.getCharacterGender());
 
                 HttpSession session = request.getSession();
                 session.setAttribute("user", character);
@@ -63,7 +64,7 @@ public class CharacterSet extends HttpServlet {
                 Character character = (Character) request.getSession().getAttribute("user");
                 String race = request.getParameter("raza");
                 character.setRace(Race.searchRace(race));
-                System.out.println("Raza escogida: " + race);
+                System.out.println("Raza escogida: " + character.getRace().getRaceName());
                 character.setRace_idRace(Race.searchRace(race).getIdRace());
 
                 response.sendRedirect("clase.html");
@@ -76,13 +77,14 @@ public class CharacterSet extends HttpServlet {
                 Character character = (Character) request.getSession().getAttribute("user");
                 String cls = request.getParameter("clase");
 
-                System.out.println("Clase escogida: " + cls);
+                
                 character.setCls(Classes.assignClass(cls));
                 character.setClass_idClass(Classes.assignClass(cls).getIdClass());
+                System.out.println("Clase escogida: " + character.getCls().getClassName());
                 
-                if (character.getCls().getClassName().equals("Arquero")) {
+                if (character.getCls().getClassName().equals("Arquero")){
                     response.sendRedirect("hab_arquero.html");
-                }else if (character.getCls().getClassName().equals("Guerrero")) {
+                }else if (character.getCls().getClassName().equals("Guerrero")){
                     response.sendRedirect("hab_guerrero.html");
                 }else if (character.getCls().getClassName().equals("Clérigo")){
                     response.sendRedirect("hab_clerigo.html");
@@ -96,17 +98,25 @@ public class CharacterSet extends HttpServlet {
             }
             
             if (request.getParameter("btn_habilidades")!=null) {
-                String[] skill = {};
+//              Arreglo que guardará las habilidades de Radio Button
+                String[] skill = request.getParameterValues("hab1");
+                String[] skill2= request.getParameterValues("hab2");
+                
                 Character character = (Character) request.getSession().getAttribute("user");
-                if (request.getParameter("hab1").equals("hab_arq1")||request.getParameter("hab1").equals("hab_arq2")||
-                        request.getParameter("hab1").equals("hab_arq3")||request.getParameter("hab2").equals("hab_arq4")||
-                        request.getParameter("hab2").equals("hab_arq5")) {
-                    
-                    
-                }
                 
+                character.setSkill(Skill.searchSkill(Integer.valueOf(skill[0])));
+                System.out.println("Habilidad Normal: "+character.getSkill().getSkillName());
+                character.setSkill2(Skill.searchSkill(Integer.valueOf(skill2[0])));
+                System.out.println("Habilidad Especial: "+character.getSkill2().getSkillName());
                 
-                
+                response.sendRedirect("equipamiento.html");
+            }
+            
+            if (request.getParameter("btn_equipamiento")!=null) {
+                Character character = (Character) request.getSession().getAttribute("user");
+                int equipment = Integer.valueOf(request.getParameter("equip1"));
+                character.setEquip(Equipment.searchEquip(equipment));
+                System.out.println("Equipamiento elegido: "+character.getEquip().getEquipmentName());
             }
         }
     }

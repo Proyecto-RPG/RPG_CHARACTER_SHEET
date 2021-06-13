@@ -67,7 +67,7 @@ public class Skill {
         try {
             Connect con = new Connect();
             con.connectAsPlayer();
-            ResultSet rs = con.state.executeQuery("SELECT * FORM habilidades WHERE idHabilidad = "+skillId+";");
+            ResultSet rs = con.state.executeQuery("SELECT * FROM habilidad WHERE idHabilidad = "+skillId+";");
             while(rs.next()){
                 skill.setIdSkill((int)rs.getObject(1));
                 skill.setSkillName((String)rs.getObject(2));

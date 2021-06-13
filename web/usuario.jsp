@@ -19,19 +19,20 @@
     </head>
     <body>
         <div class="container">
+            <%
+                    Player player = (Player) request.getSession().getAttribute("user");
+                %>
             <div class="jumbotron center-block">
                 <div class="row">
                     <div class="col-md-3 center"><img src="logo-small.png" class="center-block"></div>
-                    <div class="col-md-7 center"><p class="text5">¡Bienvenid@ nuevamente, Usuario!</p></div>
+                    <div class="col-md-7 center"><p class="text5">¡Bienvenid@ nuevamente, <%player.getNickname();%></p></div>
                     <div class="col-md-2 center"><form action=""><button name="btn_logout" class="btn btn-danger">Cerrar Sesión</button></form></div>
                 </div>
                 <br>
                 <p class="text4">Tus Personajes:</p>
                 <br>
                 <!-- INICIO ÁREA DE DESPLIEGUE DE TARJETAS DE PERSONAJE - MOSTRAR SÓLO SI USUARIO TIENE PSJES. REGISTRADOS -->
-                <%
-                    Player player = (Player) request.getSession().getAttribute("user");
-                %>
+                
                 <div id="area_personajes">
 
                     <!-- INICIO TARJETA DE PERSONAJE - REPETIR EN LISTADO (TODOS LOS ELEMENTOS IMPORTANTES TIENEN ID) -->
