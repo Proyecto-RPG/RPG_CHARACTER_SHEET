@@ -14,7 +14,6 @@ import elements.character.Character;
  */
 public class Player extends User {
 
-    private int idUser;
     private Character character;
 
     public Player() {
@@ -22,7 +21,7 @@ public class Player extends User {
 
     public Player(String nickname, String password, int typeUser, Character character) {
         super(nickname, password, typeUser);
-        this.idUser = super.getIdUser();
+
         this.character = character;
     }
 
@@ -33,15 +32,4 @@ public class Player extends User {
     public void setCharacter(Character character) {
         this.character = character;
     }
-
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
-
-
-    
 }

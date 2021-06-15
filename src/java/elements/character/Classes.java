@@ -49,7 +49,7 @@ public class Classes {
         try {
             Connect con = new Connect();
             con.connectAsPlayer();
-            ResultSet rs = con.state.executeQuery("SELECT * FROM clase WHERE nombre_clase LIKE '" + cls + "';");
+            ResultSet rs = Connect.state.executeQuery("SELECT * FROM clase WHERE nombre_clase LIKE '" + cls + "';");
             while (rs.next()) {
                 clss.setIdClass((int) rs.getObject(1));
                 clss.setClassName((String) rs.getObject(2));

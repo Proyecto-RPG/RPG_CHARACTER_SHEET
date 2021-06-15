@@ -39,7 +39,7 @@ public class ArrayCharacter {
         try {
             Connect con = new Connect();
             con.connectAsPlayer();
-            ResultSet rs = con.state.executeQuery("SELECT * FROM personaje "
+            ResultSet rs = Connect.state.executeQuery("SELECT * FROM personaje "
                     + "WHERE Usuario_id_Usuario = " + player.getIdUser() + ";");
             while (rs.next()) {
                 Character character = new Character();
@@ -63,47 +63,65 @@ public class ArrayCharacter {
 //                Recorre el arreglo de Equipamientos y dependiendo de la cantidad de elementos del arreglo
 //                lo asigna a su respectivo atributo en la clase Character.
                 for (Equipment equip : ArrayEquipment.equipmentList) {
-                    if (ArrayEquipment.equipmentList.indexOf(equip) == 0) {
-                        character.setEquip(equip);
-                        System.out.println("Equipamiento 1: " + equip.getEquipmentName());
-                    } else if (ArrayEquipment.equipmentList.indexOf(equip) == 1) {
-                        character.setEquip2(equip);
-                        System.out.println("Equipamiento 2: " + equip.getEquipmentName());
-                    } else if (ArrayEquipment.equipmentList.indexOf(equip) == 2) {
-                        character.setEquip3(equip);
-                        System.out.println("Equipamiento 3: " + equip.getEquipmentName());
-                    } else if (ArrayEquipment.equipmentList.indexOf(equip) == 3) {
-                        character.setEquip4(equip);
-                        System.out.println("Equipamiento 4: " + equip.getEquipmentName());
-                    } else if (ArrayEquipment.equipmentList.indexOf(equip) == 4) {
-                        character.setEquip5(equip);
-                        System.out.println("Equipamiento 5: " + equip.getEquipmentName());
-                    } else if (ArrayEquipment.equipmentList.indexOf(equip) == 5) {
-                        character.setEquip6(equip);
-                        System.out.println("Equipamiento 6: " + equip.getEquipmentName());
-                    } else if (ArrayEquipment.equipmentList.indexOf(equip) == 6) {
-                        character.setEquip7(equip);
-                        System.out.println("Equipamiento 7: " + equip.getEquipmentName());
-                    } else if (ArrayEquipment.equipmentList.indexOf(equip) == 7) {
-                        character.setEquip8(equip);
-                        System.out.println("Equipamiento 8: " + equip.getEquipmentName());
+                    switch (ArrayEquipment.equipmentList.indexOf(equip)) {
+                        case 0:
+                            character.setEquip(equip);
+                            System.out.println("Equipamiento 1: " + equip.getEquipmentName());
+                            break;
+                        case 1:
+                            character.setEquip2(equip);
+                            System.out.println("Equipamiento 2: " + equip.getEquipmentName());
+                            break;
+                        case 2:
+                            character.setEquip3(equip);
+                            System.out.println("Equipamiento 3: " + equip.getEquipmentName());
+                            break;
+                        case 3:
+                            character.setEquip4(equip);
+                            System.out.println("Equipamiento 4: " + equip.getEquipmentName());
+                            break;
+                        case 4:
+                            character.setEquip5(equip);
+                            System.out.println("Equipamiento 5: " + equip.getEquipmentName());
+                            break;
+                        case 5:
+                            character.setEquip6(equip);
+                            System.out.println("Equipamiento 6: " + equip.getEquipmentName());
+                            break;
+                        case 6:
+                            character.setEquip7(equip);
+                            System.out.println("Equipamiento 7: " + equip.getEquipmentName());
+                            break;
+                        case 7:
+                            character.setEquip8(equip);
+                            System.out.println("Equipamiento 8: " + equip.getEquipmentName());
+                            break;
+                        default:
+                            break;
                     }
                 }
                 character.setRace(Race.searchIdRace(character.getRace_idRace()));
 
                 for (Skill skill : ArraySkill.skillList) {
-                    if (ArraySkill.skillList.indexOf(skill) == 0) {
-                        character.setSkill(skill);
-                        System.out.println("Habilidad 1: " + skill.getSkillName());
-                    } else if (ArraySkill.skillList.indexOf(skill) == 1) {
-                        character.setSkill2(skill);
-                        System.out.println("Habilidad 2: " + skill.getSkillName());
-                    } else if (ArraySkill.skillList.indexOf(skill) == 2) {
-                        character.setSkill3(skill);
-                        System.out.println("Habilidad 3: " + skill.getSkillName());
-                    } else if (ArraySkill.skillList.indexOf(skill) == 3) {
-                        character.setSkill4(skill);
-                        System.out.println("Habilidad 4: " + skill.getSkillName());
+                    switch (ArraySkill.skillList.indexOf(skill)) {
+                        case 0:
+                            character.setSkill(skill);
+                            System.out.println("Habilidad 1: " + skill.getSkillName());
+                            break;
+                        case 1:
+                            character.setSkill2(skill);
+                            System.out.println("Habilidad 2: " + skill.getSkillName());
+                            break;
+                        case 2:
+                            character.setSkill3(skill);
+                            System.out.println("Habilidad 3: " + skill.getSkillName());
+                            break;
+                        case 3:
+                            character.setSkill4(skill);
+                            System.out.println("Habilidad 4: " + skill.getSkillName());
+                            break;
+                        default:
+                            break;
                     }
                 }
                 addCharacter(character);

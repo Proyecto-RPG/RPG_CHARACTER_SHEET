@@ -52,7 +52,7 @@ public class CharacterSet extends HttpServlet {
                 System.out.println("Genero de personaje: " + character.getCharacterGender());
 
                 HttpSession session = request.getSession();
-                session.setAttribute("user", character);
+                session.setAttribute("character", character);
 
                 response.sendRedirect("raza.html");
             }
@@ -61,7 +61,7 @@ public class CharacterSet extends HttpServlet {
 //            de metodo searchRace(), donde se instancia un objeto Race y se setea en
 //            el objeto Character capturado en la sesion.
             if (request.getParameter("btn_raza") != null) {
-                Character character = (Character) request.getSession().getAttribute("user");
+                Character character = (Character) request.getSession().getAttribute("character");
                 String race = request.getParameter("raza");
                 character.setRace(Race.searchRace(race));
                 System.out.println("Raza escogida: " + character.getRace().getRaceName());
@@ -74,10 +74,9 @@ public class CharacterSet extends HttpServlet {
 //            se instancia un objeto, se captura la sesión y se setea el objeto Classes en
 //            el objeto Character.
             if (request.getParameter("btn_clase") != null) {
-                Character character = (Character) request.getSession().getAttribute("user");
+                Character character = (Character) request.getSession().getAttribute("character");
                 String cls = request.getParameter("clase");
-
-                
+                System.out.println("Parametro clase: "+cls);
                 character.setCls(Classes.assignClass(cls));
                 character.setClass_idClass(Classes.assignClass(cls).getIdClass());
                 System.out.println("Clase escogida: " + character.getCls().getClassName());
@@ -86,7 +85,7 @@ public class CharacterSet extends HttpServlet {
                     response.sendRedirect("hab_arquero.html");
                 }else if (character.getCls().getClassName().equals("Guerrero")){
                     response.sendRedirect("hab_guerrero.html");
-                }else if (character.getCls().getClassName().equals("Clérigo")){
+                }else if (character.getCls().getClassName().equals("Clerigo")){
                     response.sendRedirect("hab_clerigo.html");
                 }else if (character.getCls().getClassName().equals("Mago")){
                     response.sendRedirect("hab_mago.html");
@@ -102,7 +101,7 @@ public class CharacterSet extends HttpServlet {
                 String[] skill = request.getParameterValues("hab1");
                 String[] skill2= request.getParameterValues("hab2");
                 
-                Character character = (Character) request.getSession().getAttribute("user");
+                Character character = (Character) request.getSession().getAttribute("character");
                 
                 character.setSkill(Skill.searchSkill(Integer.valueOf(skill[0])));
                 System.out.println("Habilidad Normal: "+character.getSkill().getSkillName());
@@ -113,10 +112,19 @@ public class CharacterSet extends HttpServlet {
             }
             
             if (request.getParameter("btn_equipamiento")!=null) {
-                Character character = (Character) request.getSession().getAttribute("user");
+                Character character = (Character) request.getSession().getAttribute("character");
                 int equipment = Integer.valueOf(request.getParameter("equip1"));
                 character.setEquip(Equipment.searchEquip(equipment));
                 System.out.println("Equipamiento elegido: "+character.getEquip().getEquipmentName());
+                
+                response.sendRedirect("usuario.jsp");
+            }
+            
+            if (request.getParameter("")!=null) {
+                int dice;
+                int sides;
+                
+                
             }
         }
     }

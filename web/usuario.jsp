@@ -25,8 +25,8 @@
             <div class="jumbotron center-block">
                 <div class="row">
                     <div class="col-md-3 center"><img src="logo-small.png" class="center-block"></div>
-                    <div class="col-md-7 center"><p class="text5">¡Bienvenid@ nuevamente, <%player.getNickname();%></p></div>
-                    <div class="col-md-2 center"><form action=""><button name="btn_logout" class="btn btn-danger">Cerrar Sesión</button></form></div>
+                    <div class="col-md-7 center"><p class="text5">¡Bienvenid@ nuevamente, <%=player.getNickname()%>!</p></div>
+                    <div class="col-md-2 center"><form action="session_manager.do"><button name="btn_logout" class="btn btn-danger">Cerrar Sesión</button></form></div>
                 </div>
                 <br>
                 <p class="text4">Tus Personajes:</p>
