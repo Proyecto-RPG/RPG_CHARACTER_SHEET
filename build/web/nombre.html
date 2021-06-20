@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Crea tu Personaje RPG - Selección de Raza</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea tu Personaje RPG - Crea tu Personaje</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+</head>
+<body>
         <div class="container">
-            <div class="jumbotron center-block">
-                <img src="logo-small.png" class="center-block">
-                <br>
-                <p class="text4">1. Tu aventura está por comenzar...</p>
-                <br>
-                <p class="text3">Ingresa el nombre de tu personaje (max. 25 caracteres):</p>
-                <!--Primera vista de la creación de personaje, envia parametros a servlets.CharacterSet.java -->
-                <form action="characterset.do" method="post">
-                    <input type="text" name="txt_nombre" class="entrada2 center-block" required>
-                    <br>
-                    <p class="text3">Selecciona el sexo de tu personaje:</p>
-                    <select name="cb_typeuser" class="mar1 lista center-block" required>
-                        <option value = "Male">Hombre</option>
-                        <option value = "Female">Mujer</option>
-                        <option value = "Undefined">Indefinido</option>
-                    </select>
-                    <button class="btn btn-primary center-block" name="btn_nombre">Continuar</button>
-                </form>
-                <br>
-                <form action=""><button class="btn btn-danger center-block">Atrás</button></form>
-            </div>
+        <div class="jumbotron center-block">
+            <img src="logo-small.png" class="center-block">
+            <br>
+            <p class="text4">1. Tu aventura está por comenzar...</p>
+            <br>
+            <p class="text3">Ingresa el nombre de tu personaje (max. 25 caracteres):</p>
+            <form action="characterset.do" method="post" autocomplete="off">
+            <input type="text" name="txt_nombre" class="entrada2 center-block" required spellcheck="false">
+            <br>
+            <p class="text3">Selecciona el sexo de tu personaje:</p>
+            <select name="cb_typeuser" class="mar1 lista center-block" required>
+                <option value = "Masculino">Masculino</option>
+                <option value = "Femenino">Femenino</option>
+                <option value = "Indefinido">Indefinido</option>
+            </select>
+            <button class="btn btn-primary center-block" name="btn_nombre">Continuar</button>
+            </form>
+            <br>
+            <form action="usuario.jsp"><button class="btn btn-danger center-block">Atrás</button></form>
         </div>
-        <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    </body>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
 </html>

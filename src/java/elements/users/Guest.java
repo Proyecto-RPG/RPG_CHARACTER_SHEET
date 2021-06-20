@@ -13,33 +13,35 @@ import model.Connect;
  *
  * @author Alex A_R
  */
-public class Guest {
+public class Guest extends Connect {
 
 //    Metodo para registrar una cuenta de usuario
-    public boolean signUp(String nickname, String password, int typeUser) {
+    public User signUp(String nickname, String password, int typeUser) {
         int validate = 0;
         Connect con = new Connect();
         con.connectAsGuest();
-
-        if (typeUser == 2) { //      typeUser = 2 corresponde al ID de Player
+        User user = new User();
+        try {
+            validate = state.executeUpdate("INSERT INTO usuario "
+                    + " VALUES(NULL,'" + nickname + "','" + password + "','" + typeUser + "');");
+        } catch (SQLException e) {
+            System.err.println("ERROR: " + e);
+        }
+        if (validate != 0) {
             try {
-                validate = Connect.state.executeUpdate("INSERT INTO usuario "
-                        + " VALUES(NULL,'" + nickname + "','" + password + "','" + typeUser + "');");
-                System.out.println("Usuario registrado como Player");
-            } catch (SQLException e) {
-                System.err.println("ERROR: " + e);
-            }
-
-        } else if (typeUser == 3) { //      typeUser = 3 corresponde al ID de GameMaster
-            try {
-                validate = Connect.state.executeUpdate("INSERT INTO usuario "
-                        + "VALUES(NULL,'" + nickname + "','" + password + "','" + typeUser + "');");
-                System.out.println("Usuario registrado como Game Master");
+                ResultSet rs = state.executeQuery("SELECT * FROM usuario WHERE nombre_usuario "
+                        + "LIKE '" + nickname + "' AND pass_usuario LIKE '" + password + "';");
+                while (rs.next()) {
+                    user.setIdUser((int) rs.getObject(1));
+                    user.setNickname((String) rs.getObject(2));
+                    user.setPassword((String) rs.getObject(3));
+                    user.setTypeUser((int) rs.getObject(4));
+                }
             } catch (SQLException e) {
                 System.err.println("ERROR: " + e);
             }
         }
-        return validate != 0;
+        return user;
     }
 
 //  Método para ingresar una cuenta creada
@@ -50,21 +52,20 @@ public class Guest {
             con.connectAsGuest();
 
 //          Query para buscar un registro con el nickname y password ingresados
-            ResultSet rs = Connect.state.executeQuery("SELECT * FROM usuario "
+            ResultSet rs = state.executeQuery("SELECT * FROM usuario "
                     + "WHERE nombre_usuario LIKE '" + nickname + "'  AND pass_usuario LIKE '" + password + "';");
-            if (rs.next()) {
-                System.out.println("Usuario encontrado");
-                while (rs.next()) {
-                    user.setIdUser((int) rs.getObject(1));
-                    user.setNickname((String) rs.getObject(2));
-                    user.setPassword((String) rs.getObject(3));
-                    user.setTypeUser((int) rs.getObject(4));
-                }
-                Connect.con.close();
-            } else {
-                System.out.println("Usuario no encontrado");
+            System.out.println("Usuario encontrado");
+            while (rs.next()) {
+                user.setIdUser((int) rs.getObject(1));
+                System.out.println("User id: " + user.getIdUser());
+                user.setNickname((String) rs.getObject(2));
+                System.out.println("User Nickname: " + user.getNickname());
+                user.setPassword((String) rs.getObject(3));
+                System.out.println("User Password: " + user.getPassword());
+                user.setTypeUser((int) rs.getObject(4));
+                System.out.println("User Tipo: " + user.getTypeUser());
             }
-
+            Connect.con.close();
         } catch (SQLException e) {
             System.err.println("ERROR: " + e);
         }

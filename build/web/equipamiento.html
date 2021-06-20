@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea tu Personaje RPG - Selección de Equipamiento</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <div class="container">
+        <div class="jumbotron center-block">
+            <img src="logo-small.png" class="center-block">
+            <br>
+            <p class="text4">5. Selecciona 1 equipamiento inicial...</p>
+            <br>
+            <form action="characterset.do" method="post">
+                <span class="center-block">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_espadadeacero.png"><input type="radio" value="2" name="equip1" required> Espada de Acero (2d8)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_espadamandoble.png"><input type="radio" value="3" name="equip1" required> Espada Mandoble (3d8)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_espadaexcalibur.png"><input type="radio" value="4" name="equip1" required> Excalibur (3d12)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_dagaasesina.png"><input type="radio" value="1" name="equip1" required> Daga Asesina (2d10)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_hachadehierro.png"><input type="radio" value="5" name="equip1" required> Hacha de Hierro (1d12)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_hachadeacero.png"><input type="radio" value="6" name="equip1" required> Hacha de Acero (2d8)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_hachademithril.png"><input type="radio" value="7" name="equip1" required> Hacha de Mithril (3d12)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_lanzahierro.png"><input type="radio" value="8" name="equip1" required>  Lanza de Hierro (1d10)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_lanzaacero.png"><input type="radio" value="9" name="equip1" required> Lanza de Acero (2d12)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_lanzafuego.png"><input type="radio" value="10" name="equip1" required> Lanza de Fuego (1d12)</p><p class="text9">(+ Daño de quemadura por 1d6 turnos)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_arcodemadera.png"><input type="radio" value="11" name="equip1" required> Arco de Madera (3d6)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_arcoelfico.png"><input type="radio" value="12" name="equip1" required> Arco Élfico (2d12)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_arcoencantado.png"><input type="radio" value="13" name="equip1" required> Arco Encantado (1d12)</p><p class="text9">(Golpea en el blanco siempre)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_varademadera.png"><input type="radio" value="14" name="equip1" required> Vara de Madera (1d6)*</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_varademarfil.png"><input type="radio" value="15" name="equip1" required> Vara de Marfil (1d8)*</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_varadeoro.png"><input type="radio" value="16" name="equip1" required> Vara de Oro (1d12)*</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_varaencantada.png"><input type="radio" value="17" name="equip1" required> Vara Encantada de Madera (1d20)*</p><p class="text9">(Vara puede ser invocada por mago 1 vez al día)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_escudodemadera.png"><input type="radio" value="18" name="equip1" required> Escudo de Madera (+5 defensa)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_escudodeacero.png"><input type="radio" value="19" name="equip1" required> Escudo de Acero (+8 defensa)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_escudomagico.png"><input type="radio" value="20" name="equip1" required> Escudo Mágico de Cristal (+4 defensa)</p><p class="text9">(Refleja ataques mágicos)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_cascodecuero.png"><input type="radio" value="21" name="equip1" required> Casco de Cuero (ligero) +3 defensa</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_cascodeacero.png"><input type="radio" value="22" name="equip1" required> Casco de Acero (pesado) +5 defensa</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_cascodemithril.png"><input type="radio" value="23" name="equip1" required> Casco de Mithril (ligero) +8 defensa</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_pecheradecuero.png"><input type="radio" value="24" name="equip1" required>  Pechera de Cuero (ligero) +3 defensa</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_pecheradeacero.png"><input type="radio" value="25" name="equip1" required> Pechera de Acero (pesado) +5 defensa</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_pecherademithril.png"><input type="radio" value="26" name="equip1" required> Pechera de Mithril (ligero) +8 defensa</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_zapatosdecuero.png"><input type="radio" value="27" name="equip1" required> Zapatos de Cuero (ligero) +1 defensa</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_zapatosdeacero.png"><input type="radio" value="28" name="equip1" required> Zapatos de Acero (pesado) +3 defensa</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_zapatosdemithril.png"><input type="radio" value="29" name="equip1" required> Zapatos de Mithril (ligero) +5 defensa</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_pantalonesdecuero.png"><input type="radio" value="30" name="equip1" required> Pantalones de Cuero (ligero) +3 defensa</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_pantalonesdeacero.png"><input type="radio" value="31" name="equip1" required> Pantalones de Acero (pesado) +5 defensa</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_pantalonesdemithril.png"><input type="radio" value="32" name="equip1" required> Pantalones de Mithril (ligero) +8 defensa</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_guantedecuero.png"><input type="radio" value="33" name="equip1" required> Guantes de Cuero (ligero) +3 defensa</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_guantedeacero.png"><input type="radio" value="34" name="equip1" required> Guantes de Acero (pesado) +5 defensa</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_guantedemithril.png"><input type="radio" value="35" name="equip1" required> Guantes de Mithril (ligero) +8 defensa</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_anillodefuego.png"><input type="radio" value="36" name="equip1" required> Anillo de Fuego (protección daño quemaduras)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_anillodetrueno.png"><input type="radio" value="37" name="equip1" required> Anillo de Trueno (protección daño eléctrino)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_anillovigoroso.png"><input type="radio" value="38" name="equip1" required>  Anillo Vigoroso (+2 de daño a tiradas de daño)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_anillodeproteccion.png"><input type="radio" value="39" name="equip1" required> Anillo Protección (+2 a tiradas de defensa)</p>
+                        <p class="text9 sinmarg"><img class="imgwidth5" src="img/equip_anillounico.png"><input type="radio" value="40" name="equip1" required> Anillo Único (invisibilidad)</p><p class="text9">(Portador recibe 1d6 daño por turno utilizado)</p>
+                    </div>
+                </div>
+                </span>
+                <br>
+                <p class="text9 colornor">* Las varas son requisito para realizar conjuros e invocaciones, tanto para Magos como Druidas.</p>
+                <br>
+                <button class="btn btn-primary center-block mar2" name="btn_equipamiento">Continuar</button>
+            </form>
+            <br>
+            <form action="clase.html"><button class="btn btn-danger center-block">Atrás</button></form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

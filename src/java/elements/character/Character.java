@@ -5,27 +5,34 @@
  */
 package elements.character;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import model.Connect;
+
 /**
  *
  * @author Alex A_R
  */
 public class Character {
 
+//  Atributos presentes en la base de datos
     private int idCharacter;
     private String characterName;
     private String characterGender;
     private int hp;
     private int level;
     private String state;
-    private String dextery;
-    private String strong;
-    private String constitution;
-    private String intelligence;
-    private String wisdom;
-    private String carism;
+    private int dextery;
+    private int strong;
+    private int constitution;
+    private int intelligence;
+    private int wisdom;
+    private int carism;
     private int User_idUser;
     private int Race_idRace;
     private int Class_idClass;
+
+//  Atributos de la mecánica del juego
     private Classes cls;
     private Equipment equip;
     private Equipment equip2;
@@ -100,51 +107,51 @@ public class Character {
         this.state = state;
     }
 
-    public String getDextery() {
+    public int getDextery() {
         return dextery;
     }
 
-    public void setDextery(String dextery) {
+    public void setDextery(int dextery) {
         this.dextery = dextery;
     }
 
-    public String getStrong() {
+    public int getStrong() {
         return strong;
     }
 
-    public void setStrong(String strong) {
+    public void setStrong(int strong) {
         this.strong = strong;
     }
 
-    public String getConstitution() {
+    public int getConstitution() {
         return constitution;
     }
 
-    public void setConstitution(String constitution) {
+    public void setConstitution(int constitution) {
         this.constitution = constitution;
     }
 
-    public String getIntelligence() {
+    public int getIntelligence() {
         return intelligence;
     }
 
-    public void setIntelligence(String intelligence) {
+    public void setIntelligence(int intelligence) {
         this.intelligence = intelligence;
     }
 
-    public String getWisdom() {
+    public int getWisdom() {
         return wisdom;
     }
 
-    public void setWisdom(String wisdom) {
+    public void setWisdom(int wisdom) {
         this.wisdom = wisdom;
     }
 
-    public String getCarism() {
+    public int getCarism() {
         return carism;
     }
 
-    public void setCarism(String carism) {
+    public void setCarism(int carism) {
         this.carism = carism;
     }
 
@@ -276,4 +283,69 @@ public class Character {
         this.skill4 = skill4;
     }
 
+    public void characterSetZeroStat() {
+        this.setStrong(0);
+        System.out.println("Strong: " + this.getStrong());
+        this.setCarism(0);
+        System.out.println("Carism: " + this.getCarism());
+        this.setDextery(0);
+        System.out.println("Dextery: " + this.getDextery());
+        this.setConstitution(0);
+        System.out.println("Constitution: " + this.getConstitution());
+        this.setIntelligence(0);
+        System.out.println("Intelligence: " + this.getIntelligence());
+        this.setWisdom(0);
+        System.out.println("Wisdom: " + this.getWisdom());
+
+    }
+
+    public void setLevelHpState(int extraHp) {
+        this.setLevel(1);
+        System.out.println("Level: " + this.getLevel());
+        this.setState("Vivo");
+        System.out.println("State: " + this.getState());
+        this.setHp(50 + extraHp);
+        System.out.println("Health Points: " + this.getHp());
+    }
+
+
+    public void addCharacter() {
+        int idEquip = this.getEquip().getIdEquipment();
+        int idUser = this.getUser_idUser();
+
+        int idSkill = this.getSkill().getIdSkill();
+
+        
+        try {
+            this.getCharacterGender();
+            Connect con = new Connect();
+            con.connectAsPlayer();
+            int rs;
+            rs = Connect.state.executeUpdate("INSERT INTO personaje VALUES(NULL,'"
+                    + this.getCharacterName() + "','" + this.getCharacterGender() + "',"
+                    + this.getHp() + "," + this.getLevel() + ",'" + this.getState() + "',"
+                    + this.getDextery() + "," + this.getStrong() + "," + this.getConstitution() + ","
+                    + this.getIntelligence() + "," + this.getWisdom() + "," + this.getCarism() + ","
+                    + idUser + "," + this.getRace_idRace() + "," + this.getClass_idClass() + ");");
+        } catch (SQLException e) {
+            System.err.println("ERROR (Tabla personaje): " + e);
+        }
+        try {
+            int rs;
+            Connect con = new Connect();
+            con.connectAsPlayer();
+            ResultSet res = Connect.state.executeQuery("SELECT 'idPersonaje' FROM personaje WHERE 'Usuario_id_Usuario' = "+idUser);
+            while(res.next()){
+                this.setIdCharacter((int)res.getObject(1));
+            }
+            int idCharacter = this.getIdCharacter();
+            
+            rs = Connect.state.executeUpdate("INSERT INTO equipamiento_personaje VALUES(" + idUser + "," + idEquip + "," + idCharacter + ");");
+            rs = Connect.state.executeUpdate("INSERT INTO habilidad_personaje VALUES(" + idSkill + "," + idCharacter + "," + idUser + ");");
+
+        } catch (SQLException e) {
+            System.err.println("ERROR (Tablas intermedias): " + e);
+        }
+
+    }
 }

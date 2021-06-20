@@ -5,6 +5,10 @@
  */
 package elements.character;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import model.Connect;
+
 /**
  *
  * @author Alex A_R
@@ -57,5 +61,23 @@ public class Skill {
     public void setSkillMod(String skillMod) {
         this.skillMod = skillMod;
     }
-
+    
+    public static Skill searchSkill(int skillId){
+        Skill skill = new Skill();
+        try {
+            Connect con = new Connect();
+            con.connectAsPlayer();
+            ResultSet rs = con.state.executeQuery("SELECT * FROM habilidad WHERE idHabilidad = "+skillId+";");
+            while(rs.next()){
+                skill.setIdSkill((int)rs.getObject(1));
+                skill.setSkillName((String)rs.getObject(2));
+                skill.setSkillMod((String)rs.getObject(3));
+                skill.setClass_idClass((int)rs.getObject(4));
+            }
+        }catch (SQLException e){
+            System.err.println("ERROR: "+e);
+        }
+        return skill;
+    }
+    
 }
