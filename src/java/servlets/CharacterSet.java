@@ -8,8 +8,10 @@ package servlets;
 import elements.character.Character;
 import elements.character.Classes;
 import elements.character.Equipment;
+import elements.character.ExtraHp;
 import elements.character.Race;
 import elements.character.Skill;
+import elements.users.Player;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -42,11 +44,16 @@ public class CharacterSet extends HttpServlet {
 //            y lo captura en una sesión como objeto Character
             if (request.getParameter("btn_nombre") != null) {
                 Character character = new Character();
+                Player player = (Player)request.getSession().getAttribute("user");
+                    character.setUser_idUser(player.getIdUser());
+                
                 String characterName = request.getParameter("txt_nombre");
                 String characterGender = request.getParameter("cb_typeuser");
-
+                
                 character.setCharacterName(characterName);
                 character.setCharacterGender(characterGender);
+//                Se setean los stats a 0 del personaje recièn creado
+                
 
                 System.out.println("Nombre de personaje: " + character.getCharacterName());
                 System.out.println("Genero de personaje: " + character.getCharacterGender());
@@ -112,20 +119,24 @@ public class CharacterSet extends HttpServlet {
             }
             
             if (request.getParameter("btn_equipamiento")!=null) {
+//              Inicializamon una sesión que guarde las vidas extras
+                ExtraHp extraHp = new ExtraHp(0,0,0,0,0);
+                HttpSession session = request.getSession();
+                session.setAttribute("extrahp", extraHp);
+                
                 Character character = (Character) request.getSession().getAttribute("character");
+                System.out.println("Prueba de Nivel 1: "+character.getLevel());
+                character.characterSetZeroStat();
+                
+                System.out.println("Prueba de Nivel 2: "+character.getLevel());
                 int equipment = Integer.valueOf(request.getParameter("equip1"));
                 character.setEquip(Equipment.searchEquip(equipment));
                 System.out.println("Equipamiento elegido: "+character.getEquip().getEquipmentName());
                 
-                response.sendRedirect("usuario.jsp");
+                response.sendRedirect("atributos.jsp");
             }
             
-            if (request.getParameter("")!=null) {
-                int dice;
-                int sides;
-                
-                
-            }
+            
         }
     }
 

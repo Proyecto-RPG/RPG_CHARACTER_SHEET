@@ -24,7 +24,6 @@ public class Connect {
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException e) {
             System.err.println("Error: " + e);
         }
-
     }
 
 //  Conexión a base de datos desde usuario Game Master

@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="elements.character.data.ArrayCharacter"%>
+<%@page import="elements.character.Character"%>
 <%@page import="elements.users.GameMaster"%>
 <%@page import="elements.users.Player"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,8 +21,8 @@
     <body>
         <div class="container">
             <%
-                    Player player = (Player) request.getSession().getAttribute("user");
-                %>
+                Player player = (Player) request.getSession().getAttribute("user");
+            %>
             <div class="jumbotron center-block">
                 <div class="row">
                     <div class="col-md-3 center"><img src="logo-small.png" class="center-block"></div>
@@ -32,7 +33,7 @@
                 <p class="text4">Tus Personajes:</p>
                 <br>
                 <!-- INICIO ÁREA DE DESPLIEGUE DE TARJETAS DE PERSONAJE - MOSTRAR SÓLO SI USUARIO TIENE PSJES. REGISTRADOS -->
-                
+
                 <div id="area_personajes">
 
                     <!-- INICIO TARJETA DE PERSONAJE - REPETIR EN LISTADO (TODOS LOS ELEMENTOS IMPORTANTES TIENEN ID) -->
@@ -50,7 +51,7 @@
                                 <img class="center-block" src="char_img.png">
                             </div>
                             <div class="row">
-                                <p class="text5" id="nombre_personaje">Nombre personaje</p>
+                                <p class="text5" id="nombre_personaje"><%=charac.getCharacterName()%></p>
                             </div>
                         </div>
 
@@ -61,7 +62,7 @@
                                 <img id="img_raza_personaje" class="center-block imgwidth4" src="img/raza_humano.png">
                             </div>
                             <div class="row center">
-                                <p id="raza_personaje" class="text3">Humano</p>
+                                <p id="raza_personaje" class="text3"><%=charac.getRace().getRaceName()%></p>
                             </div>
                         </div>
 
@@ -72,7 +73,7 @@
                                 <img id="img_clase_personaje" class="center-block imgwidth3" src="img/clase_guerrero.png">
                             </div>
                             <div class="row center">
-                                <p class="text3" id="clase_personaje">Guerrero</p>
+                                <p class="text3" id="clase_personaje"><%=charac.getCls().getClassName()%></p>
                             </div>
                         </div>
 
@@ -83,7 +84,7 @@
                                 <p class="text6" id="nivel_personaje">1</p>
                             </div>
                             <div class="row center">
-                                <p class="text3">LVL</p>
+                                <p class="text3"><%=charac.getLevel()%></p>
                             </div>
                         </div>
 
@@ -91,7 +92,7 @@
 
                         <div class="col-md-2">
                             <div class="row center">
-                                <form action=""><button name="btn_ver_psje" class="btn btn-primary mar3 center-block">Ver Personaje</button></form>
+
                             </div>
                         </div>
                     </div>
@@ -102,81 +103,64 @@
 
                 <script>
 
-
-                    var nickname = <%player.getCharacter().getCharacterName();%>;
-                    var race = <%player.getCharacter().getRace().getRaceName();%>;
-                    var classes = <%player.getCharacter().getCls().getClassName();%>;
-                    var level = <%player.getCharacter().getLevel();%>;
-
-
-                    document.getElementById("nombre_personaje").innerHTML = nickname;
-                    
-                    
                     <%
-                        if (player.getCharacter().getRace().getRaceName().equals("Humano")) {
+                        if (charac.getRace().getRaceName().equals("Humano")) {
                     %>
-                    document.getElementById("img_raza_personaje").src = "img/raza_humano.jpg";
+                    document.getElementById("img_raza_personaje").setAttribute("src","img/raza_humano.jpg");
                     <%
-                    } else if (player.getCharacter().getRace().getRaceName().equals("Elfo")) {
+                    } else if (charac.getRace().getRaceName().equals("Elfo")) {
                     %>
-                    document.getElementById("img_raza_personaje").src = "img/raza_elfo.jpg";
+                    document.getElementById("img_raza_personaje").setAttribute("src","img/raza_elfo.jpg");
                     <%
-                    } else if (player.getCharacter().getRace().getRaceName().equals("Enano")) {
+                    } else if (charac.getRace().getRaceName().equals("Enano")) {
                     %>
-                    document.getElementById("img_raza_personaje").src = "img/raza_enano.jpg";
+                    document.getElementById("img_raza_personaje").setAttribute("src","img/raza_enano.jpg");
                     <%
-                    } else if (player.getCharacter().getRace().getRaceName().equals("Orco")) {
+                    } else if (charac.getRace().getRaceName().equals("Orco")) {
                     %>
-                    document.getElementById("img_raza_personaje").src = "img/raza_orco.jpg";
+                    document.getElementById("img_raza_personaje").setAttribute("src","img/raza_orco.jpg");
                     <%
                         }
-                    %>
-                        
-                    //Cambio nombre de raza
-                    document.getElementById("raza_personaje").innerHTML = race;
                     
-                    
-                    <%
                         if (charac.getCls().getClassName().equals("Arquero")) {
                     %>
-                    document.getElementById("img_clase_personaje").src = "img/clase_arquero.jpg";
+                    document.getElementById("img_clase_personaje").setAttribute("src","img/clase_arquero.jpg");
                     <%
                     } else if (charac.getCls().getClassName().equals("Clérigo")) {
                     %>
-                    document.getElementById("img_clase_personaje").src = "img/raza_elfo.jpg";
+                    document.getElementById("img_clase_personaje").setAttribute("src","img/raza_elfo.jpg");
                     <%
                     } else if (charac.getCls().getClassName().equals("Druida")) {
                     %>
-                    document.getElementById("img_clase_personaje").src = "img/clase_druida.jpg";
+                    document.getElementById("img_clase_personaje").setAttribute("src","img/clase_druida.jpg");
                     <%
                     } else if (charac.getCls().getClassName().equals("Guerrero")) {
                     %>
-                    document.getElementById("img_clase_personaje").src = "img/clase_guerrero.jpg";
+                    document.getElementById("img_clase_personaje").setAttribute("src","img/clase_guerrero.jpg");
                     <%
-                        }else if (charac.getCls().getClassName().equals("Ladron")) {
+                    } else if (charac.getCls().getClassName().equals("Ladron")) {
                     %>
-                    document.getElementById("img_clase_personaje").src = "img/clase_ladron.jpg";
+                    document.getElementById("img_clase_personaje").setAttribute("src","img/clase_ladron.jpg");
                     <%
-                        }else if (charac.getCls().getClassName().equals("Mago")) {
+                    } else if (charac.getCls().getClassName().equals("Mago")) {
                     %>
-                    document.getElementById("img_clase_personaje").src = "img/clase_mago.jpg";
+                    document.getElementById("img_clase_personaje").setAttribute("src","img/clase_mago.jpg");
                     <%
                         }
                     %>
-                        
-                    document.getElementById("clase_personaje").innerHTML = classes;
-                    
-                    document.getElementById("nivel_personaje").innerHTML = level;
                 </script>
                 <%
-                        }
                     }
+                } else {
                 %>
                 <!-- INICIO ÁREA DE DESPLIEGUE DE MSJE. "NO EXISTEN PERSONAJES" - MOSTRAR SÓLO SI USUARIO NO TIENE PSJES. REGISTRADOS -->
                 <div class="jumbotron tarjeta center-block center" id="area_sin_personajes">
                     <p class="text7">No tienes personajes registrados. Para crear uno presiona botón "Crear Nuevo Personaje"</p>
                 </div>
                 <!-- FIN ÁREA DE DESPLIEGUE DE MSJE. "NO EXISTEN PERSONAJES" -->
+                <%
+                    }
+                %>
                 <br>
                 <!-- BOTÓN CREAR NUEVO PERSONAJE - MOSTRAR SÓLO SI USUARIO TIENE MENOS DE 4 PERSONAJES REGISTRADOS -->
                 <div id="area_boton_nuevo_psje">

@@ -49,12 +49,12 @@ public class ArrayCharacter {
                 character.setHp((int) rs.getObject(4));
                 character.setLevel((int) rs.getObject(5));
                 character.setState((String) rs.getObject(6));
-                character.setDextery((String) rs.getObject(7));
-                character.setStrong((String) rs.getObject(8));
-                character.setConstitution((String) rs.getObject(9));
-                character.setIntelligence((String) rs.getObject(10));
-                character.setWisdom((String) rs.getObject(11));
-                character.setCarism((String) rs.getObject(12));
+                character.setDextery((int) rs.getObject(7));
+                character.setStrong((int) rs.getObject(8));
+                character.setConstitution((int) rs.getObject(9));
+                character.setIntelligence((int) rs.getObject(10));
+                character.setWisdom((int) rs.getObject(11));
+                character.setCarism((int) rs.getObject(12));
                 character.setUser_idUser((int) rs.getObject(13));
                 character.setRace_idRace((int) rs.getObject(14));
                 character.setClass_idClass((int) rs.getObject(15));
