@@ -70,7 +70,7 @@ public class Race {
         try {
             Connect con = new Connect();
             con.connectAsPlayer();
-            ResultSet rs = Connect.state.executeQuery("SELECT * FROM raza WHERE idRaza="+idRace+";");
+            ResultSet rs = Connect.state.executeQuery("SELECT * FROM raza WHERE idRaza = "+idRace+";");
             while (rs.next()){
                 race.setIdRace((int) rs.getObject(1));
                 race.setRaceName((String) rs.getObject(2));
@@ -80,5 +80,26 @@ public class Race {
             System.err.println("ERROR: "+e);
         }
         return race;
+    }
+    
+    public static String raceUrlImage(int idRace){
+        String raceUrl = "";
+        switch (idRace){
+            case 1:
+                raceUrl = "img/raza_humano.png";
+                break;
+            case 2:
+                raceUrl = "img/raza_elfo.png";
+                break;
+            case 3:
+                raceUrl = "img/raza_enano.png";
+                break;
+            case 4:
+                raceUrl = "img/raza_orco.png";
+                break;
+            default:
+                break;
+        }
+        return raceUrl;
     }
 }

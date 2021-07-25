@@ -156,12 +156,13 @@ public class DiceServlet extends HttpServlet {
                 if (request.getParameter("btn_guardar_psje") != null) {
                     System.out.println("Guardando personaje...");
                     int totalHp = extraHp.getH1() + extraHp.getH2() + extraHp.getH3() + extraHp.getH4() + extraHp.getH5();
-
+                    
                     character.setLevelHpState(totalHp);
                     System.out.println("Hp Total = " + character.getHp());
-                    
+                    System.out.println("Procesando personaje");
                     character.addCharacter();
-                    Player player = (Player) request.getSession().getAttribute("user");
+                    System.out.println("Personaje agregado");
+                    Player player = (Player) request.getSession().getAttribute("player");
                     player.setCharacter(character);
                     response.sendRedirect("usuario.jsp");
                 }

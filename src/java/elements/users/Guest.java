@@ -46,7 +46,7 @@ public class Guest extends Connect {
 
 //  Método para ingresar una cuenta creada
     public User signIn(String nickname, String password) throws SQLException {
-        User user = new User();
+        User user = null;
         try {
             Connect con = new Connect();
             con.connectAsGuest();
@@ -56,6 +56,7 @@ public class Guest extends Connect {
                     + "WHERE nombre_usuario LIKE '" + nickname + "'  AND pass_usuario LIKE '" + password + "';");
             System.out.println("Usuario encontrado");
             while (rs.next()) {
+                user = new User();
                 user.setIdUser((int) rs.getObject(1));
                 System.out.println("User id: " + user.getIdUser());
                 user.setNickname((String) rs.getObject(2));

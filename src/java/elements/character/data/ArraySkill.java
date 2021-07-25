@@ -24,16 +24,14 @@ public class ArraySkill {
     }
     
     public static ArrayList<Skill> listSkill(int idCharacter){
+        ArraySkill.skillList = new ArrayList();
         Skill skill  = new Skill();
         try {
             Connect con = new Connect();
             con.connectAsPlayer();
-            ResultSet rs = con.state.executeQuery("SELECT * FROM habilidad_personaje WHERE Personaje_idPersonaje = " + idCharacter+";");
+            ResultSet rs = con.state.executeQuery("SELECT * FROM habilidad_personaje WHERE Personaje_idPersonaje = '" + idCharacter+"';");
             while (rs.next()){
-                skill.setIdSkill((int)rs.getObject(1));
-                skill.setSkillName((String)rs.getObject(2));
-                skill.setSkillMod((String)rs.getObject(3));
-                skill.setClass_idClass((int)rs.getObject(4));
+                skill = Skill.searchSkill((int) rs.getObject(1));
                 addSkill(skill);
             }
         } catch (SQLException e){

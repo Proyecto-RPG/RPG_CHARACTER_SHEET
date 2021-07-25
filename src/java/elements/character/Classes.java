@@ -78,4 +78,31 @@ public class Classes {
         }
         return cls;
     }
+    
+    public static String classUrlImage(int idClass){
+        String classUrl = "";
+        switch (idClass){
+            case 1:
+                classUrl = "img/clase_clerigo.png";
+                break;
+            case 2:
+                classUrl = "img/clase_arquero.png";
+                break;
+            case 3:
+                classUrl = "img/clase_mago.png";
+                break;
+            case 4:
+                classUrl = "img/clase_guerrero.png";
+                break;
+            case 5:
+                classUrl = "img/clase_ladron.png";
+                break;
+            case 6:
+                classUrl = "img/clase_druida.png";
+                break;
+            default:
+                break;
+        }
+        return classUrl;
+    }
 }

@@ -39,21 +39,19 @@ public class CharacterSet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
 //            Captura parametros de nombre de personaje y genero, instancia un personaje
 //            y lo captura en una sesión como objeto Character
             if (request.getParameter("btn_nombre") != null) {
                 Character character = new Character();
-                Player player = (Player)request.getSession().getAttribute("user");
-                    character.setUser_idUser(player.getIdUser());
-                
+                Player player = (Player) request.getSession().getAttribute("player");
+                character.setUser_idUser(player.getIdUser());
+
                 String characterName = request.getParameter("txt_nombre");
                 String characterGender = request.getParameter("cb_typeuser");
-                
+
                 character.setCharacterName(characterName);
                 character.setCharacterGender(characterGender);
 //                Se setean los stats a 0 del personaje recièn creado
-                
 
                 System.out.println("Nombre de personaje: " + character.getCharacterName());
                 System.out.println("Genero de personaje: " + character.getCharacterGender());
@@ -72,7 +70,7 @@ public class CharacterSet extends HttpServlet {
                 String race = request.getParameter("raza");
                 character.setRace(Race.searchRace(race));
                 System.out.println("Raza escogida: " + character.getRace().getRaceName());
-                character.setRace_idRace(Race.searchRace(race).getIdRace());
+                character.setRace_idRace(character.getRace().getIdRace());
 
                 response.sendRedirect("clase.html");
             }
@@ -83,60 +81,68 @@ public class CharacterSet extends HttpServlet {
             if (request.getParameter("btn_clase") != null) {
                 Character character = (Character) request.getSession().getAttribute("character");
                 String cls = request.getParameter("clase");
-                System.out.println("Parametro clase: "+cls);
+                System.out.println("Parametro clase: " + cls);
                 character.setCls(Classes.assignClass(cls));
-                character.setClass_idClass(Classes.assignClass(cls).getIdClass());
-                System.out.println("Clase escogida: " + character.getCls().getClassName());
-                
-                if (character.getCls().getClassName().equals("Arquero")){
-                    response.sendRedirect("hab_arquero.html");
-                }else if (character.getCls().getClassName().equals("Guerrero")){
-                    response.sendRedirect("hab_guerrero.html");
-                }else if (character.getCls().getClassName().equals("Clerigo")){
-                    response.sendRedirect("hab_clerigo.html");
-                }else if (character.getCls().getClassName().equals("Mago")){
-                    response.sendRedirect("hab_mago.html");
-                }else if (character.getCls().getClassName().equals("Ladron")){
-                    response.sendRedirect("hab_ladron.html");
-                }else if (character.getCls().getClassName().equals("Druida")){
-                    response.sendRedirect("hab_druida.html");
+                character.setClass_idClass(character.getCls().getIdClass());
+                String className = character.getCls().getClassName();
+                System.out.println("Clase escogida: " + className);
+
+                switch (className) {
+                    case "Arquero":
+                        response.sendRedirect("hab_arquero.html");
+                        break;
+                    case "Guerrero":
+                        response.sendRedirect("hab_guerrero.html");
+                        break;
+                    case "Clerigo":
+                        response.sendRedirect("hab_clerigo.html");
+                        break;
+                    case "Mago":
+                        response.sendRedirect("hab_mago.html");
+                        break;
+                    case "Ladron":
+                        response.sendRedirect("hab_ladron.html");
+                        break;
+                    case "Druida":
+                        response.sendRedirect("hab_druida.html");
+                        break;
+                    default:
+                        break;
                 }
             }
-            
-            if (request.getParameter("btn_habilidades")!=null) {
+
+            if (request.getParameter("btn_habilidades") != null) {
 //              Arreglo que guardará las habilidades de Radio Button
                 String[] skill = request.getParameterValues("hab1");
-                String[] skill2= request.getParameterValues("hab2");
-                
+                String[] skill2 = request.getParameterValues("hab2");
+
                 Character character = (Character) request.getSession().getAttribute("character");
-                
+
                 character.setSkill(Skill.searchSkill(Integer.valueOf(skill[0])));
-                System.out.println("Habilidad Normal: "+character.getSkill().getSkillName());
+                System.out.println("Habilidad Normal: " + character.getSkill().getSkillName());
                 character.setSkill2(Skill.searchSkill(Integer.valueOf(skill2[0])));
-                System.out.println("Habilidad Especial: "+character.getSkill2().getSkillName());
-                
+                System.out.println("Habilidad Especial: " + character.getSkill2().getSkillName());
+
                 response.sendRedirect("equipamiento.html");
             }
-            
-            if (request.getParameter("btn_equipamiento")!=null) {
-//              Inicializamon una sesión que guarde las vidas extras
-                ExtraHp extraHp = new ExtraHp(0,0,0,0,0);
+
+            if (request.getParameter("btn_equipamiento") != null) {
+//              Inicializa una sesión que guarde las vidas extras
+                ExtraHp extraHp = new ExtraHp(0, 0, 0, 0, 0);
                 HttpSession session = request.getSession();
                 session.setAttribute("extrahp", extraHp);
-                
+
                 Character character = (Character) request.getSession().getAttribute("character");
-                System.out.println("Prueba de Nivel 1: "+character.getLevel());
+                System.out.println("Prueba de Nivel-1: " + character.getLevel());
                 character.characterSetZeroStat();
-                
-                System.out.println("Prueba de Nivel 2: "+character.getLevel());
+
+                System.out.println("Prueba de Nivel-2: " + character.getLevel());
                 int equipment = Integer.valueOf(request.getParameter("equip1"));
                 character.setEquip(Equipment.searchEquip(equipment));
-                System.out.println("Equipamiento elegido: "+character.getEquip().getEquipmentName());
-                
+                System.out.println("Equipamiento elegido: " + character.getEquip().getEquipmentName());
+
                 response.sendRedirect("atributos.jsp");
             }
-            
-            
         }
     }
 

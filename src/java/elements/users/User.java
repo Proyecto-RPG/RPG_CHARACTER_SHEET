@@ -19,7 +19,8 @@ public class User {
     public User() {
     }
 
-    public User(String nickname, String password, int typeUser) {
+    public User(int idUser, String nickname, String password, int typeUser) {
+        this.idUser = idUser;
         this.nickname = nickname;
         this.password = password;
         this.typeUser = typeUser;

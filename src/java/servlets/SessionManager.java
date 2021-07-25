@@ -5,7 +5,7 @@
  */
 package servlets;
 
-
+import elements.character.ExtraHp;
 import elements.users.*;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -44,7 +44,6 @@ public class SessionManager extends HttpServlet {
 
                 User user = guest.signIn(nickname, password);
                 HttpSession session = request.getSession();
-
                 if (user != null) {
                     System.out.println("User no es nulo");
                     if (user.getTypeUser() == 2) {
@@ -58,12 +57,19 @@ public class SessionManager extends HttpServlet {
 
                         System.out.println("User -> Player");
                         session.setAttribute("user", player);
-                        System.out.println("Session con obj Player de nombre: "+player.getNickname());
+                        System.out.println("Session con obj Player de nombre: " + player.getNickname());
                         response.sendRedirect("usuario.jsp");
                     } else if (user.getTypeUser() == 3) {
-                        GameMaster gameMaster = (GameMaster) user;
+                        System.out.println("User es de tipo GameMaster");
+
+                        GameMaster gameMaster = new GameMaster();
+                        gameMaster.setIdUser(user.getIdUser());
+                        gameMaster.setNickname(user.getNickname());
+                        gameMaster.setPassword(user.getPassword());
+                        gameMaster.setTypeUser(3);
+                        
                         session.setAttribute("user", gameMaster);
-                        response.sendRedirect("");//Redireccion a panel de gamemaster
+                        response.sendRedirect("gamemaster.jsp");//Redireccion a panel de gamemaster
                     }
                 } else {
                     response.sendRedirect("index.html?login=" + "false");
@@ -78,34 +84,44 @@ public class SessionManager extends HttpServlet {
                 int typeUser = Integer.valueOf(request.getParameter("cb_typeuser"));
                 user = guest.signUp(nickanme, password, typeUser);
                 HttpSession session = request.getSession();
-                
+
                 if (typeUser == 2) {
                     Player player = new Player();
                     player.setIdUser(user.getIdUser());
                     player.setNickname(user.getNickname());
                     player.setPassword(user.getPassword());
                     player.setTypeUser(typeUser);
-                    
+
                     session.setAttribute("user", player);
                     response.sendRedirect("usuario.jsp");
                 } else if (typeUser == 3) {
-                    GameMaster gameMaster = (GameMaster)guest.signUp(nickanme, password, typeUser);
+                    GameMaster gameMaster = new GameMaster();
+                    gameMaster.setIdUser(user.getIdUser());
+                    gameMaster.setNickname(user.getNickname());
+                    gameMaster.setPassword(user.getPassword());
+                    gameMaster.setTypeUser(typeUser);
                     session.setAttribute("user", gameMaster);
                     System.out.println("Usuario gamemaster registrado");
+                    response.sendRedirect("gamemaster.jsp");
                 }
             }
-            
+
 //            Cierra la sesión
-            if (request.getParameter("btn_logout")!=null) {
+            if (request.getParameter("btn_logout") != null) {
                 HttpSession session = request.getSession();
-                Player player = (Player)session.getAttribute("user");
+                User user = (User) session.getAttribute("user");
                 session.invalidate();
+                HttpSession sessionC = request.getSession();
+                Character character = (Character) sessionC.getAttribute("character");
+                sessionC.invalidate();
+                HttpSession extraHP = request.getSession();
+                ExtraHp extra = (ExtraHp) extraHP.getAttribute("extrahp");
+                extraHP.invalidate();
                 System.out.println("Sesion cerrada");
-                out.println("<script>alert(Sesion Cerrada)</script>");
                 response.sendRedirect("index.html");
             }
         } catch (Exception e) {
-            System.err.println("ERROR: "+e);
+            System.err.println("ERROR: " + e);
         }
     }
 

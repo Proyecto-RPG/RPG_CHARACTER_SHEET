@@ -12,6 +12,10 @@
         <servlet-name>DiceServlet</servlet-name>
         <servlet-class>servlets.DiceServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserManager</servlet-name>
+        <servlet-class>servlets.UserManager</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SessionManager</servlet-name>
         <url-pattern>/session_manager.do</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>DiceServlet</servlet-name>
         <url-pattern>/dice.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserManager</servlet-name>
+        <url-pattern>/gamemaster_servlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

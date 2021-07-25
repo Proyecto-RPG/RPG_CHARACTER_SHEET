@@ -283,6 +283,10 @@ public class Character {
         this.skill4 = skill4;
     }
 
+    public void searchCharacter() {
+
+    }
+
     public void characterSetZeroStat() {
         this.setStrong(0);
         System.out.println("Strong: " + this.getStrong());
@@ -308,14 +312,12 @@ public class Character {
         System.out.println("Health Points: " + this.getHp());
     }
 
-
     public void addCharacter() {
         int idEquip = this.getEquip().getIdEquipment();
         int idUser = this.getUser_idUser();
 
         int idSkill = this.getSkill().getIdSkill();
 
-        
         try {
             this.getCharacterGender();
             Connect con = new Connect();
@@ -334,18 +336,19 @@ public class Character {
             int rs;
             Connect con = new Connect();
             con.connectAsPlayer();
-            ResultSet res = Connect.state.executeQuery("SELECT 'idPersonaje' FROM personaje WHERE 'Usuario_id_Usuario' = "+idUser);
-            while(res.next()){
-                this.setIdCharacter((int)res.getObject(1));
+            ResultSet res = Connect.state.executeQuery("SELECT idPersonaje FROM personaje WHERE Usuario_id_Usuario = " + idUser);
+            while (res.next()) {
+                this.setIdCharacter((int) res.getObject(1));
             }
             int idCharacter = this.getIdCharacter();
-            
+
             rs = Connect.state.executeUpdate("INSERT INTO equipamiento_personaje VALUES(" + idUser + "," + idEquip + "," + idCharacter + ");");
             rs = Connect.state.executeUpdate("INSERT INTO habilidad_personaje VALUES(" + idSkill + "," + idCharacter + "," + idUser + ");");
 
         } catch (SQLException e) {
             System.err.println("ERROR (Tablas intermedias): " + e);
         }
-
     }
+    
+    
 }

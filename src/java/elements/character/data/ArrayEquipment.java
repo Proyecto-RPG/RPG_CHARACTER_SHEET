@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package elements.character.data;
 
 import elements.character.Equipment;
@@ -11,10 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Connect;
 
-/**
- *
- * @author Alex A_R
- */
 public class ArrayEquipment {
     
     public static ArrayList<Equipment> equipmentList = new ArrayList();
@@ -24,15 +15,14 @@ public class ArrayEquipment {
     }
     
     public static ArrayList<Equipment> listEquipment(int idCharacter){
+        ArrayEquipment.equipmentList = new ArrayList();
         Equipment equip = new Equipment();
         try {
             Connect con = new Connect();
             con.connectAsPlayer();
             ResultSet rs = con.state.executeQuery("SELECT * FROM equipamiento_personaje WHERE Personaje_idPersonaje = " + idCharacter+";");
-            while (rs.next()){
-                equip.setIdEquipment((int)rs.getObject(1));
-                equip.setEquipmentName((String)rs.getObject(2));
-                addEquipment(equip);
+            while(rs.next()){
+                addEquipment(Equipment.searchEquip(idCharacter));
             }
         } catch (SQLException e){
             System.err.println("ERROR: "+e);

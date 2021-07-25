@@ -1,14 +1,7 @@
-/*
- *Conexión a la Base de Datos
- */
 package model;
 
 import java.sql.*;
 
-/**
- *
- * @author Alex A_R
- */
 public class Connect {
 
     public static Connection con;

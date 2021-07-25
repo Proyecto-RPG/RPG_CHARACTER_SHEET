@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package elements.users;
 
 import elements.character.Character;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import model.*;
 
-
-/**
- *
- * @author Alex A_R
- */
 public class Player extends User {
 
     private Character character;
@@ -19,9 +12,8 @@ public class Player extends User {
     public Player() {
     }
 
-    public Player(String nickname, String password, int typeUser, Character character) {
-        super(nickname, password, typeUser);
-
+    public Player(Character character, int idUser, String nickname, String password, int typeUser) {
+        super(idUser, nickname, password, typeUser);
         this.character = character;
     }
 
@@ -32,4 +24,24 @@ public class Player extends User {
     public void setCharacter(Character character) {
         this.character = character;
     }
+    
+    public boolean searchCharacter(int idUser){
+        boolean exist = false;
+        try{
+            Connect con = new Connect();
+            con.connectAsPlayer();
+            ResultSet rs = Connect.state.executeQuery("SELECT * FROM personaje WHERE Usuario_id_Usuario = "+idUser+";");
+            if (rs.next()) {
+                exist = true;
+            }
+        }catch (SQLException e){
+            System.err.println("ERROR: " + e);
+        }
+        return exist;
+    }
+    
+    
+
+    
+    
 }

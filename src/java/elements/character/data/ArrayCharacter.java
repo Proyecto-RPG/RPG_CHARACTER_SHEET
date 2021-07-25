@@ -5,12 +5,12 @@
  */
 package elements.character.data;
 
-import elements.users.Player;
 import elements.character.Character;
 import elements.character.Classes;
 import elements.character.Equipment;
 import elements.character.Race;
 import elements.character.Skill;
+import elements.users.Player;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -32,10 +32,8 @@ public class ArrayCharacter {
         return characterList;
     }
 
-    /*  Método para mostrar los personajes del usuario si existen y alojarlos en un ArrayList. Si no, entonces
-    retorna un falso. */
-    public static boolean listCharacter(Player player) {
-        boolean existCharacter = true;
+    public static ArrayList<Character> searchCharacter(Player player) {
+        ArrayCharacter.characterList = new ArrayList();
         try {
             Connect con = new Connect();
             con.connectAsPlayer();
@@ -62,7 +60,8 @@ public class ArrayCharacter {
 
 //                Recorre el arreglo de Equipamientos y dependiendo de la cantidad de elementos del arreglo
 //                lo asigna a su respectivo atributo en la clase Character.
-                for (Equipment equip : ArrayEquipment.equipmentList) {
+                
+                for (Equipment equip : ArrayEquipment.listEquipment(character.getIdCharacter())) {
                     switch (ArrayEquipment.equipmentList.indexOf(equip)) {
                         case 0:
                             character.setEquip(equip);
@@ -102,7 +101,7 @@ public class ArrayCharacter {
                 }
                 character.setRace(Race.searchIdRace(character.getRace_idRace()));
 
-                for (Skill skill : ArraySkill.skillList) {
+                for (Skill skill : ArraySkill.listSkill(character.getIdCharacter())) {
                     switch (ArraySkill.skillList.indexOf(skill)) {
                         case 0:
                             character.setSkill(skill);
@@ -129,6 +128,6 @@ public class ArrayCharacter {
         } catch (SQLException e) {
             System.err.println("ERROR: " + e);
         }
-        return existCharacter;
+        return characterList;
     }
 }
